@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 05/12/2022 19:09:00
+ Date: 05/12/2022 22:05:50
 */
 
 SET NAMES utf8mb4;
@@ -68,7 +68,7 @@ CREATE TABLE `auction_sessions`  (
   INDEX `auction_organizer_id`(`auction_organizer_id`) USING BTREE,
   CONSTRAINT `auction_sessions_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auction_sessions_ibfk_3` FOREIGN KEY (`auction_organizer_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auction_sessions
@@ -76,9 +76,9 @@ CREATE TABLE `auction_sessions`  (
 INSERT INTO `auction_sessions` VALUES (1, 7, 1, 10000000, 7000000, 200000, '2020-10-27 23:10:17', '2020-10-28 23:10:40', '2020-10-31 23:11:21', b'1');
 INSERT INTO `auction_sessions` VALUES (2, 2, 2, 7000000, 4000000, 200000, '2020-10-01 21:53:55', '2020-10-02 21:54:08', '2020-10-05 21:54:21', b'1');
 INSERT INTO `auction_sessions` VALUES (3, 6, 4, 8000000, 4000000, 200000, '2022-12-05 14:05:04', '2022-12-05 14:05:17', '2022-12-20 14:05:22', b'0');
-INSERT INTO `auction_sessions` VALUES (4, 5, 4, 10000000, 4000000, 200000, '2022-12-05 19:07:32', '2022-12-05 19:07:32', '2022-12-15 19:07:32', b'0');
-INSERT INTO `auction_sessions` VALUES (17, 5, 4, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
-INSERT INTO `auction_sessions` VALUES (18, 5, 4, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (4, 3, 5, 10000000, 4000000, 200000, '2022-12-05 19:07:32', '2022-12-05 19:07:32', '2022-12-15 19:07:32', b'0');
+INSERT INTO `auction_sessions` VALUES (17, 5, 3, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (18, 8, 8, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
 
 -- ----------------------------
 -- Table structure for categories
@@ -88,7 +88,7 @@ CREATE TABLE `categories`  (
   `category_id` int(255) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of categories
@@ -109,7 +109,7 @@ CREATE TABLE `commissions`  (
   `commission_value` float(255, 0) NOT NULL,
   PRIMARY KEY (`order_id`) USING BTREE,
   CONSTRAINT `commissions_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of commissions
@@ -126,7 +126,7 @@ CREATE TABLE `deliveries`  (
   `delivery_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `shipping_charge` float(255, 0) NOT NULL,
   PRIMARY KEY (`delivery_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of deliveries
@@ -178,7 +178,7 @@ CREATE TABLE `orders`  (
   `order_id` int(255) NOT NULL AUTO_INCREMENT,
   `session_id` int(255) NOT NULL,
   `total_price` float(255, 0) NOT NULL,
-  `create_Date` datetime(0) NOT NULL,
+  `create_Date` timestamp(0) NOT NULL,
   `delivery_id` int(255) NOT NULL,
   `is_Completed` bit(1) NOT NULL,
   PRIMARY KEY (`order_id`) USING BTREE,
@@ -186,7 +186,7 @@ CREATE TABLE `orders`  (
   INDEX `delivery_id`(`delivery_id`) USING BTREE,
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `auction_sessions` (`session_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`delivery_id`) REFERENCES `deliveries` (`delivery_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orders
@@ -207,7 +207,7 @@ CREATE TABLE `products`  (
   PRIMARY KEY (`product_id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
@@ -231,7 +231,7 @@ CREATE TABLE `recharge_histories`  (
   `history_id` int(255) NOT NULL,
   `wallet_id` int(255) NOT NULL,
   `value` float(255, 0) NOT NULL,
-  `create_Date` datetime(0) NOT NULL,
+  `create_Date` timestamp(0) NOT NULL,
   PRIMARY KEY (`history_id`) USING BTREE,
   INDEX `wallet_id`(`wallet_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
@@ -310,7 +310,7 @@ CREATE TABLE `suppliers`  (
   PRIMARY KEY (`supplier_id`) USING BTREE,
   INDEX `owner_id`(`owner_id`) USING BTREE,
   CONSTRAINT `suppliers_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of suppliers
@@ -341,7 +341,7 @@ CREATE TABLE `users`  (
   INDEX `address`(`address`) USING BTREE,
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `users_ibfk_2` FOREIGN KEY (`address`) REFERENCES `deliveries` (`delivery_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -375,6 +375,37 @@ CREATE TABLE `wallets`  (
 -- ----------------------------
 -- Records of wallets
 -- ----------------------------
+
+-- ----------------------------
+-- Procedure structure for Auction_Going_On
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Auction_Going_On`;
+delimiter ;;
+CREATE PROCEDURE `Auction_Going_On`()
+BEGIN
+	SELECT products.product_name Ten_SanPham,users.first_name Nguoi_To_Chuc,auction_sessions.reserve_price Gia_Khoi_Diem, auction_sessions.closing_price 		Gia_Mua_Ngay,DATEDIFF(auction_sessions.end_Day,CURRENT_TIMESTAMP()) Thoi_Gian_Con_Lai 
+		FROM auction_sessions 
+													INNER JOIN users on auction_sessions.auction_organizer_id=users.user_id
+													INNER JOIN products on auction_sessions.product_id=products.product_id
+		where auction_sessions.is_Completed=0;
+	
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Count_Product_By_Cat
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Count_Product_By_Cat`;
+delimiter ;;
+CREATE PROCEDURE `Count_Product_By_Cat`()
+BEGIN
+	SELECT categories.category_id,categories.category_name,COUNT(*) SoLuong FROM products 
+		INNER JOIN categories on products.category_id=categories.category_id 
+		GROUP BY category_id;
+END
+;;
+delimiter ;
 
 -- ----------------------------
 -- Procedure structure for Delete_Auction
@@ -465,6 +496,33 @@ BEGIN
 	INSERT INTO users(last_name,first_name,email,CMND,address,phone_number,username,users.password,role_id) 
 		VALUES(Ulastname,Ufirstname,Uemail,Ucmnd,Uaddress,Uphone,Uusername,Upass,1);
 
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for List_All_Product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `List_All_Product`;
+delimiter ;;
+CREATE PROCEDURE `List_All_Product`()
+BEGIN
+	SELECT products.product_name Ten_SanPham, products.product_image
+		FROM products INNER JOIN categories on products.category_id=categories.category_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for List_Product_By_Cat
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `List_Product_By_Cat`;
+delimiter ;;
+CREATE PROCEDURE `List_Product_By_Cat`(IN CatId INT(255))
+BEGIN
+	SELECT products.product_name Ten_SanPham, products.product_image
+		FROM products INNER JOIN categories on products.category_id=categories.category_id
+		WHERE products.category_id=CatID;
 END
 ;;
 delimiter ;
