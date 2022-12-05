@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 27/11/2022 20:17:30
+ Date: 05/12/2022 19:09:00
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,8 @@ CREATE TABLE `auction_session_participants`  (
   `auction_winner` bit(1) NOT NULL,
   PRIMARY KEY (`session_id`, `supplier_id`) USING BTREE,
   INDEX `supplier_id`(`supplier_id`) USING BTREE,
-  CONSTRAINT `auction_session_participants_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`supplier_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `auction_session_participants_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`supplier_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `auction_session_participants_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `auction_sessions` (`session_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -44,6 +45,8 @@ INSERT INTO `auction_session_participants` VALUES (2, 2, 6700000, b'0');
 INSERT INTO `auction_session_participants` VALUES (2, 3, 5700000, b'1');
 INSERT INTO `auction_session_participants` VALUES (2, 4, 6500000, b'0');
 INSERT INTO `auction_session_participants` VALUES (2, 5, 6300000, b'0');
+INSERT INTO `auction_session_participants` VALUES (3, 3, 7800000, b'0');
+INSERT INTO `auction_session_participants` VALUES (3, 4, 7600000, b'0');
 
 -- ----------------------------
 -- Table structure for auction_sessions
@@ -56,9 +59,9 @@ CREATE TABLE `auction_sessions`  (
   `reserve_price` float(255, 0) NOT NULL,
   `closing_price` float(255, 0) NOT NULL,
   `price_step` float(255, 0) NOT NULL,
-  `create_Date` datetime(0) NOT NULL,
-  `start_Day` datetime(0) NOT NULL,
-  `end_Day` datetime(0) NOT NULL,
+  `create_Date` timestamp(0) NOT NULL,
+  `start_Day` timestamp(0) NOT NULL,
+  `end_Day` timestamp(0) NOT NULL,
   `is_Completed` bit(1) NOT NULL,
   PRIMARY KEY (`session_id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
@@ -72,6 +75,10 @@ CREATE TABLE `auction_sessions`  (
 -- ----------------------------
 INSERT INTO `auction_sessions` VALUES (1, 7, 1, 10000000, 7000000, 200000, '2020-10-27 23:10:17', '2020-10-28 23:10:40', '2020-10-31 23:11:21', b'1');
 INSERT INTO `auction_sessions` VALUES (2, 2, 2, 7000000, 4000000, 200000, '2020-10-01 21:53:55', '2020-10-02 21:54:08', '2020-10-05 21:54:21', b'1');
+INSERT INTO `auction_sessions` VALUES (3, 6, 4, 8000000, 4000000, 200000, '2022-12-05 14:05:04', '2022-12-05 14:05:17', '2022-12-20 14:05:22', b'0');
+INSERT INTO `auction_sessions` VALUES (4, 5, 4, 10000000, 4000000, 200000, '2022-12-05 19:07:32', '2022-12-05 19:07:32', '2022-12-15 19:07:32', b'0');
+INSERT INTO `auction_sessions` VALUES (17, 5, 4, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (18, 5, 4, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
 
 -- ----------------------------
 -- Table structure for categories
@@ -205,16 +212,16 @@ CREATE TABLE `products`  (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (1, 'Xuân An Khang', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\1.jpg', 'Mỗi mùa xuân về chắc hẳn mỗi người đều chọn cho ngôi nhà của mình những bình hoa rực rỡ để trưng bày, điều đó khiến ngôi nhà trở nên tươi mới và giàu màu sắc', 1);
-INSERT INTO `products` VALUES (2, 'Xuân Yêu Thương', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\2.jpg', 'Xuân yêu thương là bó hoa hồng kem dâu tượng trưng cho tình yêu mới chớm nở, trong sáng, đơn thuần của thiếu nữ', 1);
-INSERT INTO `products` VALUES (3, 'Yêu Là Cưới ', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\3.jpg', 'Yêu là cưới là bó hoa cưới cầm tay cô dâu giản dị mà sang trọng với những đóa hồng trắng.', 2);
-INSERT INTO `products` VALUES (4, 'Chung Nhịp Đập', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\4.jpg', 'Chung nhịp đập là bó hoa cưới màu đỏ cam thể hiện tình yêu cháy bỏng, mê say của các cặp uyên ương.', 2);
-INSERT INTO `products` VALUES (5, 'Lovely Pink', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\5.jpg', NULL, 3);
-INSERT INTO `products` VALUES (6, 'First Love', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\6.jpg', NULL, 3);
-INSERT INTO `products` VALUES (7, 'Petal Parade', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\7.jpg', NULL, 4);
-INSERT INTO `products` VALUES (8, 'You And Me', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\8.jpg', NULL, 4);
-INSERT INTO `products` VALUES (9, 'Until You', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\9.jpg', NULL, 5);
-INSERT INTO `products` VALUES (10, 'Purple Loves', 'D:\\Nam3_HK1\\ThuongMaiDienTu\\Đồ Án CK\\Ảnh\\products\\10.jpg', NULL, 5);
+INSERT INTO `products` VALUES (1, 'Xuân An Khang', '/imgs/products/1.jpg', 'Mỗi mùa xuân về chắc hẳn mỗi người đều chọn cho ngôi nhà của mình những bình hoa rực rỡ để trưng bày, điều đó khiến ngôi nhà trở nên tươi mới và giàu màu sắc', 1);
+INSERT INTO `products` VALUES (2, 'Xuân Yêu Thương', '/imgs/products/2.jpg', 'Xuân yêu thương là bó hoa hồng kem dâu tượng trưng cho tình yêu mới chớm nở, trong sáng, đơn thuần của thiếu nữ', 1);
+INSERT INTO `products` VALUES (3, 'Yêu Là Cưới ', '/imgs/products/3.jpg', 'Yêu là cưới là bó hoa cưới cầm tay cô dâu giản dị mà sang trọng với những đóa hồng trắng.', 2);
+INSERT INTO `products` VALUES (4, 'Chung Nhịp Đập', '/imgs/products/4.jpg', 'Chung nhịp đập là bó hoa cưới màu đỏ cam thể hiện tình yêu cháy bỏng, mê say của các cặp uyên ương.', 2);
+INSERT INTO `products` VALUES (5, 'Lovely Pink', '/imgs/products/5.jpg', NULL, 3);
+INSERT INTO `products` VALUES (6, 'First Love', '/imgs/products/6.jpg', NULL, 3);
+INSERT INTO `products` VALUES (7, 'Petal Parade', '/imgs/products/7.jpg', NULL, 4);
+INSERT INTO `products` VALUES (8, 'You And Me', '/imgs/products/8.jpg', NULL, 4);
+INSERT INTO `products` VALUES (9, 'Until You', '/imgs/products/9.jpg', NULL, 5);
+INSERT INTO `products` VALUES (10, 'Purple Loves', '/imgs/products/10.jpg', NULL, 5);
 
 -- ----------------------------
 -- Table structure for recharge_histories
@@ -368,5 +375,98 @@ CREATE TABLE `wallets`  (
 -- ----------------------------
 -- Records of wallets
 -- ----------------------------
+
+-- ----------------------------
+-- Procedure structure for Delete_Auction
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Delete_Auction`;
+delimiter ;;
+CREATE PROCEDURE `Delete_Auction`(IN aid INT(255))
+BEGIN
+	DELETE FROM auction_sessions WHERE session_id=aid;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Delete_Product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Delete_Product`;
+delimiter ;;
+CREATE PROCEDURE `Delete_Product`(IN pid INT(255))
+BEGIN
+		DELETE FROM products WHERE product_id=pid;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Delete_User
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Delete_User`;
+delimiter ;;
+CREATE PROCEDURE `Delete_User`(IN uid INT(255))
+BEGIN
+	DELETE FROM users WHERE user_id=uid;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Insert_Auction
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Insert_Auction`;
+delimiter ;;
+CREATE PROCEDURE `Insert_Auction`(IN Auser_id INT(255),
+	IN Aproduct_id INT(255),
+	IN A1 INT(255),
+	IN A2 INT(255),
+	IN Astep INT(255))
+BEGIN
+	INSERT into auction_sessions(auction_organizer_id,product_id,reserve_price,closing_price,price_step,create_Date,start_Day,end_Day,is_Completed) 
+	VALUES(Auser_id,Aproduct_id,A1,A2,Astep,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),DATE_ADD(CURRENT_TIMESTAMP(),INTERVAL '10' DAY),0);
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Insert_Product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Insert_Product`;
+delimiter ;;
+CREATE PROCEDURE `Insert_Product`(IN pname VARCHAR(255),
+	IN pimage VARCHAR(255),
+	IN pdetail VARCHAR(255), 
+	IN pcategory INT(255))
+BEGIN
+	INSERT INTO products(product_name,product_image,detail,category_id) VALUES(pname,pimage,pdetail,pcategory);
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Insert_User
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Insert_User`;
+delimiter ;;
+CREATE PROCEDURE `Insert_User`(IN Ulastname VARCHAR(255),
+	IN Ufirstname VARCHAR(255),
+	IN Uemail VARCHAR(255),
+	IN Ucmnd VARCHAR(255),
+	IN Uaddress INT(255),
+	IN Uphone VARCHAR(10),
+	IN Uusername VARCHAR(255),
+	IN Upass VARCHAR(255))
+BEGIN
+	INSERT INTO users(last_name,first_name,email,CMND,address,phone_number,username,users.password,role_id) 
+		VALUES(Ulastname,Ufirstname,Uemail,Ucmnd,Uaddress,Uphone,Uusername,Upass,1);
+
+END
+;;
+delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
