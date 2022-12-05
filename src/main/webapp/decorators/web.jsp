@@ -63,17 +63,14 @@ End Footer
 		window.onclick = function(event) {
 			if (event.target == document.getElementById("myForm")) {
 				document.getElementById("myForm").style.display = "none";
-			}
-			if (event.target == document.getElementById("myCart")) {
+			}if (event.target == document.getElementById("myCart")) {
 				document.getElementById("myCart").style.display = "none";
 			}
 
 		}
 	</script>
 	<script>
-		window.onscroll = function() {
-			myFunction()
-		};
+		window.onscroll = function() {myFunction()};
 
 		var navbar = document.getElementById("navbar");
 		var sticky = navbar.offsetTop;
