@@ -5,7 +5,7 @@
 		<pattern>/api*</pattern>
 	</excludes>
 	<!-- apply Sitemesh default template -->
-	<decorator name="admin" page="admin.jsp">
+	<decorator name="admin" page="Admin.jsp">
 		<pattern>/admin*</pattern>
 	</decorator>
 	<decorator name="web" page="web.jsp">

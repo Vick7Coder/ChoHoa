@@ -8,7 +8,7 @@
     Begin Function
     -->
 	<div class="header-function">
-		<div class="logo"><a href="index.html"><img src="<c:url value="/templates/imgs/logoa2.jpg"/>"  height="100px" width="200p"/></a> </div>
+		<div class="logo"><a href="${pageContext.request.contextPath}/home"><img src="<c:url value="/templates/imgs/logoa2.jpg"/>"  height="100px" width="200p"/></a> </div>
 		<div class="nav-search">
 			<form class="form">
 				<div class="p-1 bg-light rounded rounded-pill shadow mb-4">
@@ -41,15 +41,15 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link" data-toggle="dropdown" ><i class="bi bi-list"></i> DANH MỤC SẢN PHẨM</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Tết</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/auction-list"><i class="bi bi-flower2"></i>Hoa Tết</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="product.html"><i class="bi bi-flower2"></i>Hoa Cưới</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/auction-list"><i class="bi bi-flower2"></i>Hoa Cưới</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Tulip</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/auction-list"><i class="bi bi-flower2"></i>Hoa Tulip</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Giỏ</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/auction-list"><i class="bi bi-flower2"></i>Hoa Giỏ</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Bó</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/auction-list"><i class="bi bi-flower2"></i>Hoa Bó</a>
 						</div>
 					</li>
 					<li class="nav-item">

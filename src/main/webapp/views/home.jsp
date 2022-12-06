@@ -68,10 +68,12 @@ Begin Content
 								class="card-img-top" alt="...">
 							<div class="card-body">
 								<h5 class="card-title">${a.getProd().getpName()}</h5>
+								<h5><fmt:formatNumber
+										type="number" groupingUsed="true" value="${a.getRePrice()}" />
+									VND</h5>
 								<div class="d-flex justify-content-around mt-3">
-									<span class="heart-cart"> <i class="bi bi-heart-fill "><fmt:formatNumber
-												type="number" groupingUsed="true" value="${a.getRePrice()}" />
-									 VND</i></span>
+									<span class="heart-cart"><i class="bi bi-heart-fill "></i></span>
+
 									<button type="button" class="btn btn-outline-dark">Tham
 										gia</button>
 								</div>
@@ -106,7 +108,7 @@ Begin Content
 							<div class=" block-img block-img-text"></div>
 							<div class="overlay">
 								<div class="img-text">Hoa Tulip</div>
-								<a href="#" class="btn btn-light stretched-link">Xem thêm</a>
+								<a href="${pageContext.request.contextPath}/auction-list" class="btn btn-light stretched-link">Xem thêm</a>
 							</div>
 						</div>
 						<div class="item item2">
@@ -115,7 +117,7 @@ Begin Content
 
 							<div class="overlay">
 								<div class="img-text">Hoa Cưới</div>
-								<a href="product.html" class="btn btn-light stretched-link">Xem
+								<a href="${pageContext.request.contextPath}/auction-list" class="btn btn-light stretched-link">Xem
 									thêm</a>
 							</div>
 						</div>
@@ -125,7 +127,7 @@ Begin Content
 
 							<div class="overlay">
 								<div class="img-text">Hoa Bó</div>
-								<a href="#" class="btn btn-light stretched-link">Xem thêm</a>
+								<a href="${pageContext.request.contextPath}/auction-list" class="btn btn-light stretched-link">Xem thêm</a>
 							</div>
 						</div>
 						<div class="item item4">
@@ -135,7 +137,7 @@ Begin Content
 
 							<div class="overlay">
 								<div class="img-text">Hoa Tết</div>
-								<a href="#" class="btn btn-light stretched-link">Xem thêm</a>
+								<a href="${pageContext.request.contextPath}/auction-list" class="btn btn-light stretched-link">Xem thêm</a>
 							</div>
 						</div>
 						<div class="item item5">
@@ -144,7 +146,7 @@ Begin Content
 
 							<div class="overlay">
 								<div class="img-text">Hoa Giỏ</div>
-								<a href="#" class="btn btn-light stretched-link">Xem thêm</a>
+								<a href="${pageContext.request.contextPath}/auction-list" class="btn btn-light stretched-link">Xem thêm</a>
 							</div>
 						</div>
 					</div>

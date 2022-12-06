@@ -83,6 +83,23 @@ End Footer
 			}
 		}
 	</script>
+	<script>
+		var slider1 = document.getElementById("myRange1");
+		var slider2 = document.getElementById("myRange2");
+		var output1 = document.getElementById("demo1");
+		var output2 = document.getElementById("demo2");
+		output1.innerHTML = slider1.value;
+		output2.innerHTML = slider2.value;
+
+		slider1.oninput = function() {
+			output1.innerHTML = this.value;
+
+		}
+		slider2.oninput = function() {
+
+			output2.innerHTML = this.value;
+		}
+	</script>
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
 		crossorigin="anonymous"></script>
 	<script
