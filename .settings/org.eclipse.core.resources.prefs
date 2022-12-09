@@ -1,7 +1,9 @@
 eclipse.preferences.version=1
 encoding//src/main/java/auctionplus/controller/web/AuctionListController.java=UTF-8
 encoding//src/main/java/auctionplus/controller/web/HomeController.java=UTF-8
+encoding//src/main/java/auctionplus/controller/web/LoginController.java=UTF-8
 encoding//src/main/java/auctionplus/dao/Impl/AucSSDaoImpl.java=UTF-8
 encoding//src/main/java/auctionplus/dao/Impl/CategoryDaoImpl.java=UTF-8
+encoding//src/main/java/auctionplus/dao/Impl/LoginDaoImpl.java=UTF-8
 encoding//src/main/java/auctionplus/dao/Impl/ProductDaoImpl.java=UTF-8
 encoding//src/main/java/auctionplus/dao/Impl/RoleDaoImpl.java=UTF-8
