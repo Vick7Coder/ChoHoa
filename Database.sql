@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 05/12/2022 22:05:50
+ Date: 10/12/2022 00:13:17
 */
 
 SET NAMES utf8mb4;
@@ -68,7 +68,7 @@ CREATE TABLE `auction_sessions`  (
   INDEX `auction_organizer_id`(`auction_organizer_id`) USING BTREE,
   CONSTRAINT `auction_sessions_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auction_sessions_ibfk_3` FOREIGN KEY (`auction_organizer_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of auction_sessions
@@ -207,7 +207,7 @@ CREATE TABLE `products`  (
   PRIMARY KEY (`product_id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
@@ -493,7 +493,7 @@ CREATE PROCEDURE `Insert_User`(IN Ulastname VARCHAR(255),
 	IN Uusername VARCHAR(255),
 	IN Upass VARCHAR(255))
 BEGIN
-	INSERT INTO users(last_name,first_name,email,CMND,address,phone_number,username,users.password,role_id) 
+	INSERT INTO users(last_name,first_name,email,CMND,address,phone_number,username,`password`,role_id) 
 		VALUES(Ulastname,Ufirstname,Uemail,Ucmnd,Uaddress,Uphone,Uusername,Upass,1);
 
 END
@@ -523,6 +523,56 @@ BEGIN
 	SELECT products.product_name Ten_SanPham, products.product_image
 		FROM products INNER JOIN categories on products.category_id=categories.category_id
 		WHERE products.category_id=CatID;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for List_Product_By_Price
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `List_Product_By_Price`;
+delimiter ;;
+CREATE PROCEDURE `List_Product_By_Price`(A1 INT(255),
+	A2 INT(255))
+BEGIN
+	SELECT products.product_name Ten_SanPham, products.product_image
+		FROM products INNER JOIN supplier_detail on products.product_id=supplier_detail.product_id
+		WHERE supplier_detail.default_price BETWEEN A1 AND A2;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Update_Auction
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Update_Auction`;
+delimiter ;;
+CREATE PROCEDURE `Update_Auction`(IN Aproduct_id INT(255),
+	IN A1 INT(255),
+	IN A2 INT(255),
+	IN Astep INT(255))
+BEGIN
+	UPDATE auction_sessions 
+	SET auction_sessions.product_id=Aproduct_id, auction_sessions.reserve_price=A1, auction_sessions.closing_price=A2, auction_sessions.price_step=Astep;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Update_User
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Update_User`;
+delimiter ;;
+CREATE PROCEDURE `Update_User`(IN Uemail VARCHAR(255),
+	IN Ucmnd VARCHAR(255),
+	IN Uaddress INT(255),
+	IN Uphone VARCHAR(10),
+	IN Uusername VARCHAR(255),
+	IN Upass VARCHAR(255))
+BEGIN
+	UPDATE users
+	SET users.email=Uemail, users.CMND=cmnd, users.address=Uaddress, users.username=Uusername, users.`password`=Upass;
+
 END
 ;;
 delimiter ;
