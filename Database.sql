@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 10/12/2022 00:13:17
+ Date: 10/12/2022 21:38:30
 */
 
 SET NAMES utf8mb4;
@@ -45,8 +45,24 @@ INSERT INTO `auction_session_participants` VALUES (2, 2, 6700000, b'0');
 INSERT INTO `auction_session_participants` VALUES (2, 3, 5700000, b'1');
 INSERT INTO `auction_session_participants` VALUES (2, 4, 6500000, b'0');
 INSERT INTO `auction_session_participants` VALUES (2, 5, 6300000, b'0');
+INSERT INTO `auction_session_participants` VALUES (3, 1, 7100000, b'0');
 INSERT INTO `auction_session_participants` VALUES (3, 3, 7800000, b'0');
 INSERT INTO `auction_session_participants` VALUES (3, 4, 7600000, b'0');
+INSERT INTO `auction_session_participants` VALUES (3, 5, 7300000, b'0');
+INSERT INTO `auction_session_participants` VALUES (4, 1, 8400000, b'0');
+INSERT INTO `auction_session_participants` VALUES (4, 2, 800000, b'0');
+INSERT INTO `auction_session_participants` VALUES (17, 1, 7000000, b'0');
+INSERT INTO `auction_session_participants` VALUES (17, 2, 6800000, b'0');
+INSERT INTO `auction_session_participants` VALUES (17, 3, 6400000, b'0');
+INSERT INTO `auction_session_participants` VALUES (18, 4, 7500000, b'0');
+INSERT INTO `auction_session_participants` VALUES (18, 5, 7000000, b'0');
+INSERT INTO `auction_session_participants` VALUES (20, 1, 7000000, b'0');
+INSERT INTO `auction_session_participants` VALUES (20, 3, 7500000, b'0');
+INSERT INTO `auction_session_participants` VALUES (21, 1, 7000000, b'0');
+INSERT INTO `auction_session_participants` VALUES (21, 2, 6800000, b'0');
+INSERT INTO `auction_session_participants` VALUES (21, 3, 6600000, b'0');
+INSERT INTO `auction_session_participants` VALUES (21, 4, 6400000, b'0');
+INSERT INTO `auction_session_participants` VALUES (21, 5, 6100000, b'0');
 
 -- ----------------------------
 -- Table structure for auction_sessions
@@ -75,10 +91,12 @@ CREATE TABLE `auction_sessions`  (
 -- ----------------------------
 INSERT INTO `auction_sessions` VALUES (1, 7, 1, 10000000, 7000000, 200000, '2020-10-27 23:10:17', '2020-10-28 23:10:40', '2020-10-31 23:11:21', b'1');
 INSERT INTO `auction_sessions` VALUES (2, 2, 2, 7000000, 4000000, 200000, '2020-10-01 21:53:55', '2020-10-02 21:54:08', '2020-10-05 21:54:21', b'1');
-INSERT INTO `auction_sessions` VALUES (3, 6, 4, 8000000, 4000000, 200000, '2022-12-05 14:05:04', '2022-12-05 14:05:17', '2022-12-20 14:05:22', b'0');
-INSERT INTO `auction_sessions` VALUES (4, 3, 5, 10000000, 4000000, 200000, '2022-12-05 19:07:32', '2022-12-05 19:07:32', '2022-12-15 19:07:32', b'0');
-INSERT INTO `auction_sessions` VALUES (17, 5, 3, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
-INSERT INTO `auction_sessions` VALUES (18, 8, 8, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-15 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (3, 6, 4, 8000000, 4000000, 200000, '2022-12-05 14:05:04', '2022-12-05 14:05:17', '2022-12-31 14:05:22', b'0');
+INSERT INTO `auction_sessions` VALUES (4, 3, 5, 10000000, 4000000, 200000, '2022-12-05 19:07:32', '2022-12-05 19:07:32', '2022-12-31 19:07:32', b'0');
+INSERT INTO `auction_sessions` VALUES (17, 5, 3, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-31 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (18, 8, 8, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-31 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (20, 3, 6, 10000000, 4000000, 200000, '2022-12-10 19:18:52', '2022-12-10 19:18:52', '2022-12-31 19:18:52', b'0');
+INSERT INTO `auction_sessions` VALUES (21, 3, 7, 10000000, 4000000, 200000, '2022-12-10 19:18:54', '2022-12-10 19:18:54', '2022-12-31 19:18:54', b'0');
 
 -- ----------------------------
 -- Table structure for categories
@@ -389,6 +407,28 @@ BEGIN
 													INNER JOIN products on auction_sessions.product_id=products.product_id
 		where auction_sessions.is_Completed=0;
 	
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Auction_Place_Bid
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Auction_Place_Bid`;
+delimiter ;;
+CREATE PROCEDURE `Auction_Place_Bid`(Asession_id INT(255),
+	Asupplier_id INT(255),
+	Aprice INT(255))
+BEGIN
+	DECLARE flag INT DEFAULT -1;
+	
+	SELECT auction_session_price INTO flag FROM auction_session_participants WHERE session_id=Asession_id AND supplier_id=Asupplier_id;
+	
+	IF (flag <= 0) THEN
+		INSERT INTO auction_session_participants(session_id,supplier_id,auction_session_price,auction_winner) VALUES(Asession_id,Asupplier_id,Aprice,0);
+	ELSE
+		UPDATE auction_session_participants SET auction_session_price=Aprice WHERE session_id=Asession_id AND supplier_id=Asupplier_id;
+	END IF;
 END
 ;;
 delimiter ;
