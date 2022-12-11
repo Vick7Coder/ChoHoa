@@ -1,0 +1,37 @@
+
+/* Begin Content */
+.content{
+    width: 100%;
+    margin: 0 auto;
+}
+.wrap-icon{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    line-height: 90px;
+    text-align: center;
+    display: inline-block;
+    background: firebrick;
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.benefit-icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 90px;
+    text-align: center;
+    display: inline-block;
+    background: firebrick;
+    color: #fff;
+    font-size: 40px;
+}
+
+strong{
+    color: darkred;
+}
+h2{
+    font-family: sans-serif;
+}
+/* End Content */

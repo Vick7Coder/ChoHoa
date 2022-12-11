@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="detail.css">
+</head>
+<body>
+<!--
+Begin Header
+-->
+<div class="header" id="header">
+
+    <!--
+    Begin Function
+    -->
+    <div class="header-function">
+        <div class="logo"><a href="index.html"><img src="./img/logoa2.jpg" height="100px" width="200px"></a> </div>
+        <div class="nav-search ">
+            <form class="form">
+                <div class="p-1 bg-light rounded rounded-pill shadow mb-4">
+                    <div class="input-group">
+                        <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="bi bi-search" style="color: darkred"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="function mt-5 mr-4">
+            <a href="#" onclick="openForm()"><span class="login text-login">Đăng nhập/Đăng ký</span></a>
+        </div>
+
+    </div>
+    <!--
+     End Function
+     -->
+
+    <!--
+     Begin Navbar
+     -->
+
+    <div class="header-category">
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: darkred" id="navbar">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" ><i class="bi bi-list"></i> DANH MỤC SẢN PHẨM</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Tết</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="product.html"><i class="bi bi-flower2"></i>Hoa Cưới</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Tulip</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Giỏ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Bó</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auction.html">CUỘC ĐẤU GIÁ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tutorial.html">HƯỚNG DẪN </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">GIỚI THIỆU</a>
+                    </li>
+                </ul>
+                <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+                    <div class="navbar-nav ml-auto">
+                        <a href="#" class="nav-item nav-link active"><i class="bi bi-house"></i></a>
+                    </div>
+                    <div class="dropdown">
+                        <div href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                            <span  class="nav-item nav-link "> <i class="bi bi-bag"></i> </span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                            <div class="title-wrap">
+                                <a href="#" class="small ml-auto">Mark all as read</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                            <span  class="nav-item nav-link "> <i class="bi bi-chat-dots"></i> </span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                            <div class="title-wrap">
+                                <a href="#" class="small ml-auto">Mark all as read</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                            <span class="nav-item nav-link "><i class="bi bi-bell-fill"></i></span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                            <div class="title-wrap">
+                                <a href="#" class="small ml-auto">Mark all as read</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <div href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Antonio Moreno <b class="caret"></b></div>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+                            <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
+                            <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
+                            <div class="divider dropdown-divider"></div>
+                            <a href="#" class="dropdown-item"> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--
+     End Navbar
+     -->
+
+</div>
+
+<!--
+End Header
+-->
+<!--
+Begin Content
+-->
+<div class="content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+    <h2 class="text-heading">THÔNG TIN SẢN PHẨM</h2>
+    <div class="container m-5">
+        <div class="row d-flex justify-content-left">
+            <div class="col-xl-5">
+                <img src="img/hoatulip.jpg " class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="col-xl-7">
+                <div class="card-header mt-3 border-dark mb-3 shadow" style="font-size: 15px;font-weight: bold;">
+                    <h3 class="card-title">Tên gọi</h3>
+                    <div class="card-body text-dark">
+                        <h5 class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</h5>
+                        <div class="card-title mt-5">
+                            <div class="rounded shadow text-center mb-3 mt-3" style="background: white">
+                                <p class="mb-0 font-weight-bold text-uppercase">Thời gian còn lại</p>
+                                <table class="table table-borderless">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Ngày</th>
+                                        <th scope="col">Giờ</th>
+                                        <th scope="col">Phút</th>
+                                        <th scope="col">Giây</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>12</td>
+                                        <td>23</td>
+                                        <td>11</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-title">
+                            <h3>
+                            <span class="badge badge-success ">Trạng thái</span>
+                            <span >Đang diễn ra</span>
+                            </h3>
+                        </div>
+                        <div class="card-title">
+                            <h3>
+                                <span class="badge badge-success">Thông tin đấu giá</span>
+                                <span>7 người tham gia</span>
+
+                            </h3>
+                        </div>
+                        <div class="card-title">
+                            <h3>
+                            <span class="badge badge-success">Giá khởi điểm</span>
+                            <span>100.000.000</span>
+                            <span>VND</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="float-right mt-5">
+                        <button type="button" class="btn btn-danger" onclick="openDetail()">Tham gia</button>
+                        <button type="button" class="btn btn-success ml-3" onclick="openPayment()">Giao dịch ngay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-lg m-5">
+        <div class="card border-light mb-3 shadow" style="min-width: 18rem;">
+            <div class="card-header">Những người đang tham gia</div>
+            <div class="card-body text-dark">
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th scope="col">Số thứ tự</th>
+                        <th scope="col">Tên người tham gia</th>
+                        <th scope="col">Giá đặt</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>100.000.000 VNĐ</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>100.000.000 VNĐ</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td >Larry the Bird</td>
+                        <td>100.000.000 VNĐ</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="container m-5">
+        <div class="card border-dark mb-3 shadow" style="min-width: 18rem;">
+            <div class="card-header">Mô tả sản phẩm</div>
+            <div class="card-body text-dark">
+                <table class="table table-borderless">
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">Trạng thái</th>
+                        <td>Mới</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Số lượng</th>
+                        <td>1</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Thời gian bắt đầu</th>
+                        <td>25-05-2022 10:10:10</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Thời gian kết thúc</th>
+                        <td>25-05-2022 10:10:10</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Giá khởi điểm</th>
+                        <td>100.000.000 VND</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Người đăng</th>
+                        <td>Nguyễn Văn A</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thông tin liên hệ</th>
+                        <td>nguyenvana@gmail</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ghi chú</th>
+                        <td>Không</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-heading">TÀI SẢN TƯƠNG TỰ</h2>
+    <div class="container m-5">
+        <div class="card-deck">
+            <div class="card shadow">
+                <div class="image-product">
+                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <div class="card-text">
+                        <p>Some quick example text to build on the card.</p>
+                    </div>
+                    <button type="button" class="btn btn-danger float-right">Tham gia</button>
+                </div>
+            </div>
+            <div class="card shadow">
+                <div class="image-product">
+                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <div class="card-text">
+                        <p>Some quick example text to build on the card.</p>
+                    </div>
+                    <button type="button" class="btn btn-danger float-right">Tham gia</button>
+                </div>
+            </div>
+            <div class="card shadow">
+                <div class="image-product">
+                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <div class="card-text">
+                        <p>Some quick example text to build on the card title and .</p>
+                    </div>
+                    <button type="button" class="btn btn-danger float-right">Tham gia</button>
+                </div>
+            </div>
+            <div class="card shadow">
+                <div class="image-product">
+                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <div class="card-text">
+                        <p>Some quick example text to build on the card.</p>
+                    </div>
+                    <button type="button" class="btn btn-danger float-right ">Tham gia</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--
+End Content
+-->
+
+
+<!--
+Begin Footer
+-->
+<div class="ontop">
+    <a href="#header"><button class="btn btn-danger"><i class="bi bi-chevron-double-up"></i></button></a>
+</div>
+<div class="footer-block">
+    <div class="footer-block-content">ĐỪNG NGẦN NGẠI HÃY TÌM KIẾM CƠ HỘI CHO BẠN</div>
+</div>
+
+<div class="footer">
+    <div class="footer-logo">
+        <div class="logo-footer"> <img src="./img/logoa2.jpg" height="100px" width="200px"></div>
+        <div align="center">daugianghich@gmail.com</div>
+        <div align="center">0902342211</div>
+    </div>
+    <div class="footer-about">
+        <div style="font-weight: bold;padding-bottom: 5px">Về chúng tôi</div>
+        <div>Giới thiệu</div>
+        <div>Quy chế hoạt động</div>
+        <div>Tài liệu hướng dẫn</div>
+    </div>
+    <div class="footer-policy">
+        <div style="font-weight: bold; padding-bottom: 5px">Chính sách</div>
+        <div>Cho thuê tổ chức đấu giá</div>
+        <div>Chính sách bảo mật thông tin</div>
+    </div>
+
+    <div class="footer-email" style="font-weight: bold">Đăng ký để nhận tin mới nhất
+        <div>
+            <form class="form-inline mt-3">
+                <input class="form-control" type="search" placeholder="Địa chỉ email">
+                <button class="btn btn-outline-success" type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="form-popup" id="formPayment">
+    <!-- Pills navs -->
+    <!-- Section: Design Block -->
+    <form>
+        <!-- Jumbotron -->
+        <div class="form-detail rounded shadow mb-5" style="background: firebrick">
+            <div class="d-flex justify-content-between">
+                <h4 class="text-white">Giao dịch</h4>
+                <h4 class="text-white" onclick="closePayment()"><i class="bi bi-x-lg"></i></h4>
+            </div>
+            <div class="container-lg text-center text-lg-start">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="rounded shadow text-center mb-3 mt-5" style="background: white">
+                            <p class="mb-0 font-weight-bold text-uppercase">Thời gian còn lại</p>
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Ngày</th>
+                                    <th scope="col">Giờ</th>
+                                    <th scope="col">Phút</th>
+                                    <th scope="col">Giây</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>4</td>
+                                    <td>12</td>
+                                    <td>23</td>
+                                    <td>11</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="text-white float-left">Giá hiện tại</p>
+                        <input class="form-control" type="text" placeholder="100.000.000 VND" readonly>
+                        <h5 class="my-5 display-4 fw-bold" style="color: white">
+                            The best offer <br/>
+                            <span class="text-primary">for your product</span>
+                        </h5>
+                    </div>
+                    <div class="col-lg-6 mb-5 mt-5">
+                        <p class="text-white float-left">Place your bid</p>
+                        <div class="form-group">
+                            <select  class="form-control">
+                                <option>Disabled select</option>
+                            </select>
+                        </div>
+                        <p class="text-white float-left">Place your bid</p>
+                        <div class="form-group">
+                            <select  class="form-control">
+                                <option>Disabled select</option>
+                            </select>
+                        </div>
+                        <p class="text-white float-left">Place your bid</p>
+                        <div class="form-group">
+                            <select  class="form-control">
+                                <option>Disabled select</option>
+                            </select>
+                        </div>
+                        <h5 class="text-white float-left">Tổng tiền thu về</h5>
+                        <h5 class="text-white">100.000.000 VND</h5>
+                        <div class="form-group float-left mt-4">
+                            <div class="form-check">
+                                <input class="form-check-input"  type="checkbox" >
+                                <label class="form-check-label text-white">
+                                    Đồng ý tất cả điều khoản và qui định của chúng tôi
+                                </label>
+                                <label class="form-check-label text-white">
+                                    Vui lòng đọc kỹ trước qui định và chính sách trước khi xác nhận
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success btn-lg btn-block">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jumbotron -->
+    </form>
+    <!-- Section: Design Block -->
+</div>
+<div class="form-popup" id="formDetail">
+    <!-- Pills navs -->
+    <!-- Section: Design Block -->
+    <form>
+        <!-- Jumbotron -->
+        <div class="form-detail rounded shadow mb-5" style="background: firebrick">
+            <div class="d-flex justify-content-between">
+                <h4 class="text-white">Đấu giá</h4>
+                <h4 class="text-white" onclick="closeDetail()"><i class="bi bi-x-lg"></i></h4>
+            </div>
+            <div class="container-lg text-center text-lg-start">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="rounded shadow text-center mb-4 mt-5" style="background: white">
+                            <p class="mb-0 font-weight-bold text-uppercase">Thời gian còn lại</p>
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Ngày</th>
+                                    <th scope="col">Giờ</th>
+                                    <th scope="col">Phút</th>
+                                    <th scope="col">Giây</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>4</td>
+                                    <td>12</td>
+                                    <td>23</td>
+                                    <td>11</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-white float-left">Giá hiện tại</p>
+                        <input class="form-control" type="text" placeholder="100.000.000 VND" readonly>
+                        <h5 class="my-5 display-4 fw-bold" style="color: white">
+                            The best offer <br/>
+                            <span class="text-primary">for your product</span>
+                        </h5>
+                    </div>
+                    <div class="col-lg-6 mb-5 mt-5">
+
+                        <p class="text-white float-left">Ví tiền</p>
+                        <div class="form-group">
+                            <select  class="form-control">
+                                <option>Disabled select</option>
+                            </select>
+                        </div>
+                        <p for="numberForm" class="text-white float-left mt-5">Place your bid</p>
+                        <div class="input-group">
+                            <input type="number" id="numberForm" class="form-control" min="0" max="999999999" step="100000">
+                            <div class="input-group-append">
+                                <span class="input-group-text">VND</span>
+                            </div>
+                        </div>
+                        <div class="form-group float-left mt-4">
+                            <div class="form-check">
+                                <input class="form-check-input"  type="checkbox" >
+                                <label class="form-check-label text-white">
+                                    Đồng ý tất cả điều khoản và qui định của chúng tôi
+                                </label>
+                                <label class="form-check-label text-white">
+                                    Vui lòng đọc kỹ trước qui định và chính sách trước khi xác nhận
+                                </label>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success btn-lg btn-block">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jumbotron -->
+    </form>
+    <!-- Section: Design Block -->
+</div>
+<div class="cart-popup" id="myCart">
+    <div class="card cart-form">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <h4 class="">Giỏ hàng</h4>
+                <h4 class="" onclick="closeCart()"><i class="bi bi-x-lg" style="color: black"></i></h4>
+            </div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <button type="button" class="btn btn-primary" style="background: darkred">Thanh toán</button>
+        </div>
+    </div>
+</div>
+<div class="form-popup" id="myForm">
+    <!-- Pills navs -->
+    <!-- Section: Design Block -->
+    <section class="">
+        <!-- Jumbotron -->
+        <div class="form-container px-4 py-5 px-md-5 text-center text-lg-start" style="background: firebrick">
+            <div class="d-flex justify-content-between">
+                <h4 class="text-white">Đăng nhập</h4>
+                <h4 class="text-white" onclick="closeForm()"><i class="bi bi-x-lg"></i></h4>
+            </div>
+            <div class="container">
+                <div class="row gx-lg-5 align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="card mt-5">
+
+                            <div class="card-body py-5 px-md-5">
+                                <h2 class="mb-4">Đăng nhập</h2>
+                                <form>
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="txtEmail" class="form-control" placeholder="Email" />
+
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="txtPass" class="form-control" placeholder="Password"/>
+                                    </div>
+
+                                    <!-- Checkbox -->
+                                    <div class="form-check d-flex mb-4">Remember password
+                                        <input class="form-check-input me-3" type="checkbox" value="" id="form2Example33" checked />
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                        Đăng nhập
+                                    </button>
+
+                                    <!-- Register buttons -->
+                                    <div class="text-center">
+                                        <p>Not a member? <a href="register.html">Register</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h1 class="my-5 display-3 fw-bold" style="color: white">
+                            The best offer <br />
+                            <span class="text-primary">for your business</span>
+                        </h1>
+                        <p style="color: white">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+                            quibusdam tempora at cupiditate quis eum maiores libero
+                            veritatis? Dicta facilis sint aliquid ipsum atque?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Jumbotron -->
+    </section>
+    <!-- Section: Design Block -->
+</div>
+<!--
+End Footer
+-->
+
+<script>
+    function openDetail() {
+        document.getElementById("formDetail").style.display = "block";
+    }
+    function closeDetail() {
+        document.getElementById("formDetail").style.display = "none";
+    }
+</script>
+<script>
+    function openPayment() {
+        document.getElementById("formPayment").style.display = "block";
+    }
+    function closePayment() {
+        document.getElementById("formPayment").style.display = "none";
+    }
+</script>
+
+<script>
+  function openCart() {
+    document.getElementById("myCart").style.display = "block";
+  }
+  function closeCart() {
+    document.getElementById("myCart").style.display = "none";
+  }
+</script>
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == document.getElementById("myForm")) {
+      document.getElementById("myForm").style.display = "none";
+    }
+    if (event.target == document.getElementById("myCart")) {
+      document.getElementById("myCart").style.display = "none";
+    }
+      if (event.target == document.getElementById("formDetail")) {
+          document.getElementById("formDetail").style.display = "none";
+      }
+      if (event.target == document.getElementById("formPayment")) {
+          document.getElementById("formPayment").style.display = "none";
+      }
+
+  }
+</script>
+<script>
+  window.onscroll = function() {myFunction()};
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>
