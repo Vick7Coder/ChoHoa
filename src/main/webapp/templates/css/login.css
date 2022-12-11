@@ -1,0 +1,8 @@
+
+.form-container {
+    visibility: visible;
+    background: darkred;
+    margin: auto;
+    padding: 20px;
+    width: 100%;
+}

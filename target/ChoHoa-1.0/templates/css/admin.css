@@ -101,10 +101,7 @@ body{
 .navbar .nav-item i {
     font-size: 18px;
 }
-.navbar .nav-item span {
-    position: relative;
-    top: 3px;
-}
+
 .navbar .navbar-nav > a {
     color: #efe5ff;
     padding: 8px 15px;
@@ -176,7 +173,7 @@ body{
 }
 @media (min-width: 1200px){
     .form-inline .input-group {
-        width: 350px;
+        width: 250px;
         margin-left: 30px;
     }
 }

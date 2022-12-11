@@ -14,7 +14,6 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="<c:url value="/templates/css/style.css"/>">
-<link rel="stylesheet" href="<c:url value="/templates/css/product.css"/>">
 </head>
 <body>
 	<!--
