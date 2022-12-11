@@ -108,8 +108,23 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 	}
 	public static void main(String[] args) {
 		UserDao dao = new UserDaoImpl();
-		UserModel j = dao.get(3);
-		System.out.println(j.toString());
+		DeliveryService k = new DeliveryServiceImpl();
+		RoleService l = new RoleServiceImpl();
+		UserModel ko = new UserModel();
+		ko.setfName("Long");
+		ko.setlName("Hoàng");
+		ko.setEmail("423543");
+		ko.setAddress(k.get(3));
+		ko.setpNum("0233");
+		ko.setuName("ujk");
+		ko.setuPass("hieu");
+		ko.setRole(l.get(1));
+		try {
+			dao.insert(ko);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	@Override
 	public List<UserModel> getAll() {

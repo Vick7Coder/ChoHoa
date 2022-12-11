@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+
 <!--Begin Header-->
 <div class="header" id="header">
 
@@ -22,7 +23,20 @@
 			</form>
 		</div>
 		<div class="function mt-5 mr-4">
-			<a href="#" onclick="openForm()"><span class="login text-login">Đăng nhập/Đăng ký</span></a>
+			<!-- <a href="#" onclick="openForm()"><span class="login text-login">Đăng nhập/Đăng ký</span></a> -->
+			<c:choose>
+					<c:when test="${sessionScope.acc == null}">
+						<a class="login text-login"
+							 onclick="openForm()">Đăng nhập</a>
+					</c:when>
+					<c:otherwise>
+						<a class="login text-login"
+							href="${pageContext.request.contextPath}/myaccount">${nameUSer}</a>
+						
+						<a class="login text-login"
+							href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+					</c:otherwise>
+				</c:choose>
 		</div>
 
 	</div>
@@ -115,14 +129,28 @@
 						</div>
 					</div>
 					<div class="nav-item dropdown">
-						<div href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Antonio Moreno <b class="caret"></b></div>
+					<c:choose>
+					<c:when test="${sessionScope.acc == null}">
+						<div href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Guest <b class="caret"></b></div>
+						<div class="dropdown-menu">
+							<a href="register" class="dropdown-item"><i class="fa fa-user-o"></i> Đăng kí</a>
+							<div class="divider dropdown-divider"></div>
+							<a onclick="openForm()" class="dropdown-item"> Đăng nhập</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> ${nameUSer} <b class="caret"></b></div>
 						<div class="dropdown-menu">
 							<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
 							<a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
 							<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
 							<div class="divider dropdown-divider"></div>
-							<a href="#" class="dropdown-item"> Logout</a>
+							<a href="${pageContext.request.contextPath}/logout" class="dropdown-item"> Đăng xuất</a>
 						</div>
+						
+					</c:otherwise>
+				</c:choose>
+						
 					</div>
 				</div>
 			</div>

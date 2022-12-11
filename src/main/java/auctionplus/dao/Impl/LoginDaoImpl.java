@@ -37,7 +37,7 @@ public class LoginDaoImpl extends DBConnect implements LoginDao {
 			rs = ps.executeQuery();
 			// lấy từ ResultSet đổ vào
 			while (rs.next()) {
-				DeliveryModel add = delService.get(Integer.parseInt(rs.getString("delivery_id")));
+				DeliveryModel add = delService.get(Integer.parseInt(rs.getString("address")));
 				RoleModel role = roleService.get(Integer.parseInt(rs.getString("role_id")));
 				UserModel user = new UserModel();
 				user.setlName(rs.getString("last_name"));
@@ -56,6 +56,12 @@ public class LoginDaoImpl extends DBConnect implements LoginDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public static void main(String[] args) {
+		LoginDao log = new LoginDaoImpl();
+		UserModel j = log.login("truongphuc", "123");
+		System.out.println(j.toString());
+		
 	}
 
 }

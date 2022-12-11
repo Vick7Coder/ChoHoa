@@ -68,9 +68,9 @@ Begin Footer
 		<div
 			class="form-container px-4 py-5 px-md-5 text-center text-lg-start"
 			style="background: firebrick">
-			<div class="btn-close-form">
-				<button onclick="closeForm()">&times;</button>
-			</div>
+			<h4 class="text-white float-right" onclick="closeForm()">
+				<i class="bi bi-x-lg"></i>
+			</h4>
 			<div class="container">
 				<div class="row gx-lg-5 align-items-center">
 					<div class="col-lg-6 mb-5 mb-lg-0">
@@ -89,17 +89,18 @@ Begin Footer
 
 							<div class="card-body py-5 px-md-5">
 								<h2 class="mb-4">Đăng nhập</h2>
-								<form>
+								<form action="login" method="post">
+								<p class="text-danger">${mess}</p>
 									<!-- Email input -->
 									<div class="form-outline mb-4">
-										<input type="email" id="txtEmail" class="form-control"
+										<input type="text" name="user" value="${username}" id="txtEmail" class="form-control"
 											placeholder="Email" />
 
 									</div>
 
 									<!-- Password input -->
 									<div class="form-outline mb-4">
-										<input type="password" id="txtPass" class="form-control"
+										<input type="password" name="pass" value="${password}" id="txtPass" class="form-control"
 											placeholder="Password" />
 									</div>
 
@@ -116,7 +117,7 @@ Begin Footer
 									<!-- Register buttons -->
 									<div class="text-center">
 										<p>
-											Not a member? <a href="register.html">Register</a>
+											Not a member? <a href="register">Register</a>
 										</p>
 									</div>
 								</form>
