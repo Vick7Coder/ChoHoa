@@ -1,0 +1,64 @@
+
+/* Begin Content */
+.content{
+    width: 90%;
+    margin: 20px auto;
+    min-height: 100px;
+
+}
+.image-product:hover{
+    opacity: 0.6;
+    font-size: 200%;
+}
+.text-heading{
+    text-align: center;
+    border-bottom: 1px solid darkred;
+    width: 30%;
+}
+.item{
+    min-height: 50px;
+    position: relative;
+
+}
+.content-shipping{
+    height: 500px;
+    width: 100%;
+
+}
+.img-shipping {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    width: 100%;
+    margin: 40px auto;
+}
+.content-product-grid-img
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: minmax(200px,auto);
+    width: 90%;
+    margin: 0 auto;
+    grid-template-areas:
+    "aa kk bb bb"
+    "cc cc bb bb"
+    "cc cc dd dd"
+}
+.item5{
+    grid-area: dd;
+}
+.item1{
+    grid-area: aa;
+}
+
+.item2{
+    grid-area: kk;
+}
+
+.item3{
+    grid-area: bb;
+}
+
+.item4{
+    grid-area: cc;
+}

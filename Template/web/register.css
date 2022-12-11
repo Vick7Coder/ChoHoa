@@ -1,0 +1,31 @@
+
+/* Begin Content */
+.content{
+    min-height: 100px;
+    width: 100%;
+    margin: 0px auto;
+    background: firebrick;
+}
+.text-login{
+    color: firebrick;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .2rem;
+    font-weight: 700;
+    min-width: 100px;
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+.card-registration .select-arrow {
+    top: 13px;
+}
+.card{
+    box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 19px 0px rgba(0,0,0,0.75);
+}
+/* End Content */

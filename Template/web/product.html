@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+<!--
+Begin Header
+-->
+<div class="header" id="header">
+
+    <!--
+    Begin Function
+    -->
+    <div class="header-function">
+        <div class="logo"><a href="index.html"><img src="./img/logoa2.jpg" height="100px" width="200px"></a> </div>
+        <div class="nav-search ">
+            <form class="form">
+                <div class="p-1 bg-light rounded rounded-pill shadow mb-4">
+                    <div class="input-group">
+                        <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="bi bi-search" style="color: darkred"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="function mt-5 mr-4">
+            <a href="#" onclick="openForm()"><span class="login text-login">Đăng nhập/Đăng ký</span></a>
+        </div>
+
+    </div>
+    <!--
+     End Function
+     -->
+
+    <!--
+     Begin Navbar
+     -->
+
+    <div class="header-category">
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: darkred" id="navbar">
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" ><i class="bi bi-list"></i> DANH MỤC SẢN PHẨM</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Tết</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="product.html"><i class="bi bi-flower2"></i>Hoa Cưới</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Tulip</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Giỏ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><i class="bi bi-flower2"></i>Hoa Bó</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="auction.html">CUỘC ĐẤU GIÁ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tutorial.html">HƯỚNG DẪN </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">GIỚI THIỆU</a>
+                    </li>
+                </ul>
+                <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+                    <div class="navbar-nav ml-auto">
+                        <a href="#" class="nav-item nav-link active"><i class="bi bi-house"></i></a>
+                    </div>
+                    <div class="dropdown">
+                        <div href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                            <span  class="nav-item nav-link "> <i class="bi bi-bag"></i> </span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                            <div class="title-wrap">
+                                <a href="#" class="small ml-auto">Mark all as read</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                            <span  class="nav-item nav-link "> <i class="bi bi-chat-dots"></i> </span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                            <div class="title-wrap">
+                                <a href="#" class="small ml-auto">Mark all as read</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <div href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                            <span class="nav-item nav-link "><i class="bi bi-bell-fill"></i></span>
+                        </div>
+                        <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                            <div class="title-wrap">
+                                <a href="#" class="small ml-auto">Mark all as read</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <div href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://www.tutorialrepublic.com/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Antonio Moreno <b class="caret"></b></div>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+                            <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
+                            <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
+                            <div class="divider dropdown-divider"></div>
+                            <a href="#" class="dropdown-item"> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--
+     End Navbar
+     -->
+
+</div>
+
+<!--
+End Header
+-->
+
+<!--
+Begin Content
+-->
+<div class="content mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card border-light mb-3" style="max-width: 18rem">
+                    <div class="card-header" style="font-weight: bold;font-size: 20px">Danh Mục Sản Phẩm</div>
+                    <div class="card-body">
+                        <div class="list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Hoa Cưới<span style="background: darkred" class="badge badge-primary badge-pill">1</span></a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Hoa Tết <span style="background: darkred" class="badge badge-primary badge-pill">1</span></a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Hoa Bó  <span style="background: darkred" class="badge badge-primary badge-pill">1</span></a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Hoa Giỏ  <span style="background: darkred" class="badge badge-primary badge-pill">1</span></a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Hoa Tulip  <span style="background: darkred" class="badge badge-primary badge-pill">1</span></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-light mt-2 mb-3" style="max-width: 18rem;">
+                    <div class="card-header" style="font-weight: bold;font-size: 20px">Lọc sản phẩm</div>
+                    <div class="card-body">
+                        <div class="list-group-flush">
+                            <h5 class="card-title">Trạng thái</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Tất cả
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Mới nhất
+                                </label>
+                            </div>
+                        </div>
+                       <div class="list-group-flush mt-3">
+                           <h5 class="card-title">Giá</h5>
+                           <div class="slidecontainer">
+                               <input type="range" min="1" max="999999999" value="1" class="slider s1" id="myRange1">
+                               <p class="mt-2">Giá tiền từ: <span id="demo1"></span> VNĐ</p>
+                               <input type="range" min="1" max="999999999" value="999999999" class="slider s2" id="myRange2">
+                               <p class="mt-2">Giá tiền đến: <span id="demo2"></span> VNĐ </p>
+                           </div>
+                       </div>
+
+                    </div>
+                    <button type="button" class="btn btn-danger float-right ">Tìm sản phẩm</button>
+                </div>
+
+            </div>
+            <div class="col-sm-9">
+
+                    <div class="card-header" style="font-size: 20px;font-weight: bold;">
+                        <h5>Hoa Cưới</h5>
+                        <h5>Trang 1</h5>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 mt-3">
+                        <div class="col mb-4">
+                            <div class="card shadow">
+                              <div class="image-product">
+                                  <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                              </div>
+                                <div class="card-body ">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Giá: </p>
+                                    <p class="card-text">Thời gian: </p>
+                                    <p class="card-text">Người bán: </p>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
+                                        <a href="detail.html"> <button type="button" class="btn btn-outline-danger">Tham gia</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card shadow">
+                                <div class="image-product">
+                                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Giá: </p>
+                                    <p class="card-text">Thời gian: </p>
+                                    <p class="card-text">Người bán: </p>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
+                                        <button type="button" class="btn btn-outline-danger">Tham gia</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card shadow">
+                                <div class="image-product">
+                                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Giá: </p>
+                                    <p class="card-text">Thời gian: </p>
+                                    <p class="card-text">Người bán: </p>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
+                                        <button type="button" class="btn btn-outline-danger">Tham gia</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card shadow">
+                                <div class="image-product">
+                                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Giá: </p>
+                                    <p class="card-text">Thời gian: </p>
+                                    <p class="card-text">Người bán: </p>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
+                                        <button type="button" class="btn btn-outline-danger">Tham gia</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card shadow">
+                                <div class="image-product">
+                                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Giá: </p>
+                                    <p class="card-text">Thời gian: </p>
+                                    <p class="card-text">Người bán: </p>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
+                                        <button type="button" class="btn btn-outline-danger">Tham gia</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4">
+                            <div class="card shadow">
+                                <div class="image-product">
+                                    <img src="./img/hoabo3.jpg" class="card-img-top image" alt="...">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Giá: </p>
+                                    <p class="card-text">Thời gian: </p>
+                                    <p class="card-text">Người bán: </p>
+                                    <div class="d-flex justify-content-around mt-3">
+                                        <span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
+                                        <button type="button" class="btn btn-outline-danger">Tham gia</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="pag d-flex justify-content-sm-end">
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--
+End Content
+-->
+
+<!--
+Begin Footer
+-->
+<div class="ontop">
+    <a href="#header"><button class="btn btn-danger"><i class="bi bi-chevron-double-up"></i></button></a>
+</div>
+<div class="footer-block">
+    <div class="footer-block-content">ĐỪNG NGẦN NGẠI HÃY TÌM KIẾM CƠ HỘI CHO BẠN</div>
+</div>
+<div class="footer" >
+    <div class="footer-logo">
+        <div class="logo-footer"> <img src="./img/logoa2.jpg" height="100px" width="200px"></div>
+        <div align="center">daugianghich@gmail.com</div>
+        <div align="center">0902342211</div>
+    </div>
+    <div class="footer-about">
+        <div style="font-weight: bold;padding-bottom: 5px">Về chúng tôi</div>
+        <div>Giới thiệu</div>
+        <div>Quy chế hoạt động</div>
+        <div>Tài liệu hướng dẫn</div>
+    </div>
+    <div class="footer-policy">
+        <div style="font-weight: bold; padding-bottom: 5px">Chính sách</div>
+        <div>Cho thuê tổ chức đấu giá</div>
+        <div>Chính sách bảo mật thông tin</div>
+    </div>
+
+    <div class="footer-email" style="font-weight: bold">Đăng ký để nhận tin mới nhất
+        <div>
+            <form class="form-inline mt-3">
+                <input class="form-control" type="search" placeholder="Địa chỉ email">
+                <button class="btn btn-outline-success" type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--
+End Footer
+-->
+<script>
+    function openCart() {
+        document.getElementById("myCart").style.display = "block";
+    }
+    function closeCart() {
+        document.getElementById("myCart").style.display = "none";
+    }
+</script>
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("myForm")) {
+            document.getElementById("myForm").style.display = "none";
+        }if (event.target == document.getElementById("myCart")) {
+            document.getElementById("myCart").style.display = "none";
+        }
+
+    }
+</script>
+<script>
+    var slider1 = document.getElementById("myRange1");
+    var slider2 = document.getElementById("myRange2");
+    var output1 = document.getElementById("demo1");
+    var output2 = document.getElementById("demo2");
+    output1.innerHTML = slider1.value;
+    output2.innerHTML = slider2.value;
+
+    slider1.oninput = function() {
+        output1.innerHTML = this.value;
+
+    }
+    slider2.oninput = function() {
+
+        output2.innerHTML = this.value;
+    }
+</script>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>

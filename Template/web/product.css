@@ -1,0 +1,83 @@
+
+/* Begin Content */
+.content{
+    min-height: 100px;
+    width: 100%;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+.image-product:hover{
+    opacity: 0.6;
+    font-size: 200%;
+}
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: darkred;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    wwidth: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: darkred;
+    cursor: pointer;
+}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.heart-cart{
+    font-size: 30px;
+}
+
+.heart-cart:hover{
+    color: firebrick;
+}
+
+/* End Content */
