@@ -30,4 +30,10 @@ public class RoleModel {
 		this.rName = rName;
 	}
 
+	@Override
+	public String toString() {
+		return "RoleModel [rId=" + rId + ", rName=" + rName + "]";
+	}
+	
+
 }

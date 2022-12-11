@@ -34,7 +34,7 @@ public class DeliveryDaoImpl extends DBConnect implements DeliveryDao {
 	public static void main(String[] args) {
 		DeliveryDao dao = new DeliveryDaoImpl();
 		DeliveryModel j = dao.get(2);
-		System.out.println(j.toString());
+		System.out.println(j.getdId());
 	}
 	@Override
 	public List<DeliveryModel> getAll() {
