@@ -194,7 +194,44 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 		}
 		return list;
 	}
+	@Override
+	public List<AucSSModel> getAllLifeTime() {
+		List<AucSSModel> list = new ArrayList<AucSSModel>();
+		String sql = "	SELECT auction_sessions.*\r\n" + 
+				"		FROM auction_sessions \r\n" + 
+				"													INNER JOIN users on auction_sessions.auction_organizer_id=users.user_id\r\n" + 
+				"													INNER JOIN products on auction_sessions.product_id=products.product_id\r\n" + 
+				"		where auction_sessions.is_Completed=0;";
+		try {
+			// mở kết nối database
+			conn = new DBConnect().getConnection();
+			// ném câu query qua sql
+			ps = conn.prepareStatement(sql);
+			// chạy query và nhận kết quả
+			rs = ps.executeQuery();
+			// lấy từ ResultSet đổ vào
+			while (rs.next()) {
+				AucSSModel auc = new AucSSModel();
+				ProductModel product = productS.get(rs.getInt("product_id"));
+				UserModel user = userS.get(rs.getInt("auction_organizer_id"));
+				auc.setSsId(rs.getInt("session_id"));
+				auc.setUser(user);
+				auc.setProd(product);
+				auc.setRePrice(rs.getDouble("reserve_price"));
+				auc.setCloPrice(rs.getDouble("closing_price"));
+				auc.setPriceStep(rs.getDouble("price_step"));
+				auc.setCreaDate(rs.getDate("create_Date"));
+				auc.setStartDay(rs.getDate("start_Day"));
+				auc.setEndDay(rs.getDate("end_Day"));
+				auc.setComplete(rs.getBoolean("is_Completed"));
+				list.add(auc);
+			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	@Override
 	public List<AucSSModel> getAllAucByPid(String pId) {
 		List<AucSSModel> list = new ArrayList<AucSSModel>();
