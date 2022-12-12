@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 10/12/2022 21:38:30
+ Date: 12/12/2022 14:40:13
 */
 
 SET NAMES utf8mb4;
@@ -427,6 +427,31 @@ BEGIN
 	ELSE
 		UPDATE auction_session_participants SET auction_session_price=Aprice WHERE session_id=Asession_id AND supplier_id=Asupplier_id;
 	END IF;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Auction_Time_Remaining
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Auction_Time_Remaining`;
+delimiter ;;
+CREATE PROCEDURE `Auction_Time_Remaining`(Aid INT(255))
+BEGIN
+
+	DECLARE ngay INT(255) DEFAULT 0;
+	DECLARE gio INT(255) DEFAULT 0;
+	DECLARE phut INT(255) DEFAULT 0;
+	DECLARE giay INT(255) DEFAULT 0;
+	DECLARE remain INT(255) DEFAULT 0;
+	
+	SELECT TIMESTAMPDIFF(SECOND,CURRENT_DATE,end_Day) INTO remain FROM auction_sessions WHERE session_id=Aid;
+	SET ngay=FLOOR(remain/60/60/24);
+	SET giay=MOD(remain,60);
+	SET phut=MOD(MOD(remain,60),60);
+	SET gio=MOD(MOD(MOD(remain,60),60),24);
+	
+	SELECT CONCAT(ngay," : ",gio," : ",phut," : ",giay) AS Time_Remaining;
 END
 ;;
 delimiter ;
