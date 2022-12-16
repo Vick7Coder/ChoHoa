@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import auctionplus.connection.DBConnect;
+import auctionplus.dao.DeliveryDao;
 import auctionplus.dao.RoleDao;
+import auctionplus.model.DeliveryModel;
 import auctionplus.model.RoleModel;
 
 public class RoleDaoImpl extends DBConnect implements RoleDao {
@@ -33,6 +35,12 @@ public class RoleDaoImpl extends DBConnect implements RoleDao {
 			// TODO: handle exception
 		}
 		return null;
+	}
+	public static void main(String[] args) {
+		RoleDao dao = new RoleDaoImpl();
+		RoleModel j = dao.get(1);
+		
+		System.out.println(j.getrId());
 	}
 
 }

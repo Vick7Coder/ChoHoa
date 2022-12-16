@@ -99,4 +99,9 @@ public class AuctionSessionServiceImpl implements AuctionSessionService {
 		return aucDao.pageAucSSByCId(cid, index);
 	}
 
+	@Override
+	public List<AucSSModel> getAllLifeTime() {
+		return aucDao.getAllLifeTime();
+	}
+
 }

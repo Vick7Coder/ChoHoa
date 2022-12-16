@@ -21,6 +21,8 @@ public interface AuctionSessionService {
 
 	List<AucSSModel> getAll();
 
+	List<AucSSModel> getAllLifeTime();
+
 	List<AucSSModel> getAllAucByPid(String pId);
 
 	List<AucSSModel> getAllAucByCid(String cId);

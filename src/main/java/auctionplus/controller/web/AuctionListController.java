@@ -37,15 +37,18 @@ public class AuctionListController extends HttpServlet {
 		AuctionSessionService auc = new AuctionSessionServiceImpl();
 		// step2: Sử dụng Đối tượng List để chứa danh sách từ DAO
 		List<CategoryModel> cate = cateS.getALLCategory();
-		List<AucSSModel> listAuc = auc.getAll();
+//		List<AucSSModel> listAuc = auc.getAllLifeTime();
 		
-		/*String indexPage = req.getParameter("index");
+		String indexPage = req.getParameter("index");
 		// khởi tạo trang đầu
 		if (indexPage == null) {
 			indexPage = "1";
 		}
 		int index = Integer.parseInt(indexPage);
 		int cid1 = Integer.parseInt(cid);
+		req.setAttribute("cc", cid);
+		CategoryModel catName = cateS.get(cid1);
+		req.setAttribute("catName", catName);
 		// step3: thiết lâp dữ liệu lên jsp
 		if ("0".equals(cid)) {
 			int count = prod.countAll();
@@ -55,7 +58,7 @@ public class AuctionListController extends HttpServlet {
 			}
 			List<AucSSModel> list = auc.pagingAucSS(index);
 			req.setAttribute("endP", endPage);
-			req.setAttribute("allauc", list);
+			req.setAttribute("listAuc", list);
 		} else {
 			index = 1;
 			int count = auc.countCid(cid1);
@@ -65,14 +68,14 @@ public class AuctionListController extends HttpServlet {
 				endPage++;
 			}
 			List<AucSSModel> listAC = auc.pageAucSSByCId(cid, index);
-			req.setAttribute("allauc", listAC);
+			req.setAttribute("listAuc", listAC);
 			req.setAttribute("endP", endPage);
-		}*/
+		}
 
 		req.setAttribute("listcate", cate);
-		req.setAttribute("listAuc", listAuc);
-		/*req.setAttribute("tagactive", cid);
-		req.setAttribute("tag", index);*/
+	/*	req.setAttribute("listAuc", listAuc);*/
+		req.setAttribute("tagactive", cid);
+		req.setAttribute("tag", index);
 		// step4: trả về trang jsp nào
 		RequestDispatcher rq = req.getRequestDispatcher("/views/auction-list.jsp");
 		rq.forward(req, resp);

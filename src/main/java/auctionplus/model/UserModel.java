@@ -16,14 +16,14 @@ public class UserModel {
 
 	}
 
-	public UserModel(int uId, String lName, String fName, String email, String cMND, DeliveryModel address, String pNum,
+	public UserModel(int uId, String lName, String fName, String email, String CMND, DeliveryModel address, String pNum,
 			String uName, String uPass, RoleModel role) {
 
 		this.uId = uId;
 		this.lName = lName;
 		this.fName = fName;
 		this.email = email;
-		CMND = cMND;
+		this.CMND = CMND;
 		this.address = address;
 		this.pNum = pNum;
 		this.uName = uName;
@@ -67,8 +67,8 @@ public class UserModel {
 		return CMND;
 	}
 
-	public void setCMND(String cMND) {
-		CMND = cMND;
+	public void setCMND(String CMND) {
+		this.CMND = CMND;
 	}
 
 	public DeliveryModel getAddress() {

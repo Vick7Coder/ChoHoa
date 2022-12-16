@@ -19,6 +19,8 @@ public interface AucSSDao {
 
 	AucSSModel get(int id);
 
+	List<AucSSModel> getAllLifeTime();
+
 	List<AucSSModel> getAll();
 
 	List<AucSSModel> getAllAucByPid(String pId);

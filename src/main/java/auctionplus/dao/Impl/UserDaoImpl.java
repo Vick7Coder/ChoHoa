@@ -13,8 +13,10 @@ import auctionplus.model.RoleModel;
 import auctionplus.model.UserModel;
 import auctionplus.service.DeliveryService;
 import auctionplus.service.RoleService;
+import auctionplus.service.UserService;
 import auctionplus.service.Impl.DeliveryServiceImpl;
 import auctionplus.service.Impl.RoleServiceImpl;
+import auctionplus.service.Impl.UserServiceImpl;
 
 public class UserDaoImpl extends DBConnect implements UserDao {
 	Connection conn = null;
@@ -25,6 +27,7 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 
 	@Override
 	public void insert(UserModel user) {
+
 		String sql = "INSERT INTO users (last_name, first_name, email, CMND, address, phone_number, username, `password`, role_id) VALUES(?,?,?,?,?,?,?,?,?);";
 		try {
 			Connection conn = new DBConnect().getConnection();
@@ -38,9 +41,13 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 			ps.setString(7, user.getuName());
 			ps.setString(8, user.getuPass());
 			ps.setInt(9, user.getRole().getrId());
+			ps.executeUpdate();
+			System.out.println(ps);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	@Override
@@ -58,6 +65,7 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 			ps.setString(7, newUser.getuName());
 			ps.setString(8, newUser.getuPass());
 			ps.setInt(9, newUser.getRole().getrId());
+			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -106,26 +114,7 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 		}
 		return null;
 	}
-	public static void main(String[] args) {
-		UserDao dao = new UserDaoImpl();
-		DeliveryService k = new DeliveryServiceImpl();
-		RoleService l = new RoleServiceImpl();
-		UserModel ko = new UserModel();
-		ko.setfName("Long");
-		ko.setlName("Hoàng");
-		ko.setEmail("423543");
-		ko.setAddress(k.get(3));
-		ko.setpNum("0233");
-		ko.setuName("ujk");
-		ko.setuPass("hieu");
-		ko.setRole(l.get(1));
-		try {
-			dao.insert(ko);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+
 	@Override
 	public List<UserModel> getAll() {
 		List<UserModel> list = new ArrayList<UserModel>();
@@ -133,7 +122,7 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-			
+
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				DeliveryModel add = delService.get(rs.getInt("delivery_id"));
@@ -163,7 +152,7 @@ public class UserDaoImpl extends DBConnect implements UserDao {
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
-			
+
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				DeliveryModel add = delService.get(rs.getInt("delivery_id"));
