@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 12/12/2022 14:40:13
+ Date: 21/12/2022 16:46:36
 */
 
 SET NAMES utf8mb4;
@@ -391,6 +391,50 @@ INSERT INTO `auction_session_participants` VALUES (21, 4, 6400000, b'0');
 INSERT INTO `auction_session_participants` VALUES (21, 5, 6100000, b'0');
 
 
+-- ----------------------------
+-- Procedure structure for Auction_End
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Auction_End`;
+delimiter ;;
+CREATE PROCEDURE `Auction_End`(Aid INT(255))
+BEGIN
+	
+	DECLARE ngay INT(255) DEFAULT 0;
+	DECLARE gio INT(255) DEFAULT 0;
+	DECLARE phut INT(255) DEFAULT 0;
+	DECLARE giay INT(255) DEFAULT 0;
+	DECLARE remain INT(255) DEFAULT 0;
+	
+	DECLARE end_price INT(255) DEFAULT 0;
+	
+	SELECT TIMESTAMPDIFF(SECOND,CURRENT_DATE,end_Day) INTO remain FROM auction_sessions WHERE session_id=Aid;
+	SET ngay=FLOOR(remain/60/60/24);
+	SET giay=MOD(remain,60);
+	SET phut=MOD(MOD(remain,60),60);
+	SET gio=MOD(MOD(MOD(remain,60),60),24);
+	
+	SELECT MIN(auction_session_price) INTO end_price from auction_session_participants WHERE session_id=Aid;
+	
+	IF(ngay<=0 AND gio<=0 AND phut<=0 AND giay<=0) THEN 
+		UPDATE auction_session_participants SET auction_winner=1 WHERE session_id=Aid AND auction_session_price=end_price;
+	END IF;
+	
+	IF(ngay<=0 AND gio<=0 AND phut<=0 AND giay<=0) THEN 
+		UPDATE auction_sessions SET is_Completed=1 WHERE session_id=Aid ;
+	END IF;
+		
+	IF(ngay<=0 AND gio<=0 AND phut<=0 AND giay<=0) THEN 
+		SELECT users.user_id winner_id
+			FROM auction_session_participants 
+			INNER JOIN suppliers ON auction_session_participants.supplier_id=suppliers.supplier_id
+			INNER JOIN users ON suppliers.owner_id=users.user_id
+			WHERE auction_session_participants.session_id=Aid AND auction_session_participants.auction_winner=1;
+	END IF;	
+	
+
+END
+;;
+delimiter ;
 
 -- ----------------------------
 -- Procedure structure for Auction_Going_On
