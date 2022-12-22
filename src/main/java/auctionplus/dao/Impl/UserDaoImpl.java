@@ -13,10 +13,8 @@ import auctionplus.model.RoleModel;
 import auctionplus.model.UserModel;
 import auctionplus.service.DeliveryService;
 import auctionplus.service.RoleService;
-import auctionplus.service.UserService;
 import auctionplus.service.Impl.DeliveryServiceImpl;
 import auctionplus.service.Impl.RoleServiceImpl;
-import auctionplus.service.Impl.UserServiceImpl;
 
 public class UserDaoImpl extends DBConnect implements UserDao {
 	Connection conn = null;

@@ -1,5 +1,6 @@
 package auctionplus.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import auctionplus.model.AucSSModel;
@@ -30,6 +31,8 @@ public interface AuctionSessionService {
 	List<AucSSModel> searchByProductName(String txtSearch);
 
 	List<AucSSModel> pagingAucSS(int index);
+
+	Date timeLife(int ssID);
 
 	List<AucSSModel> pageAucSSByPId(String pid, int index);
 

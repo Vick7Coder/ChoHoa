@@ -1,5 +1,6 @@
 package auctionplus.service.Impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import auctionplus.dao.AucSSDao;
@@ -102,6 +103,11 @@ public class AuctionSessionServiceImpl implements AuctionSessionService {
 	@Override
 	public List<AucSSModel> getAllLifeTime() {
 		return aucDao.getAllLifeTime();
+	}
+
+	@Override
+	public Date timeLife(int ssID) {
+		return aucDao.timeLife(ssID);
 	}
 
 }

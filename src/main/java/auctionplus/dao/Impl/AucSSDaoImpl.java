@@ -1,6 +1,7 @@
 package auctionplus.dao.Impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -309,7 +310,7 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 	@Override
 	public List<AucSSModel> pagingAucSS(int index) {
 		List<AucSSModel> list = new ArrayList<AucSSModel>();
-		String sql = "SELECT * FROM auction_sessions ORDER BY session_id LIMIT ?, 3;";
+		String sql = "SELECT * FROM auction_sessions WHERE is_Completed = 0 ORDER BY session_id LIMIT ?, 3;";
 		try {
 			// mở kết nối database
 			conn = new DBConnect().getConnection();
@@ -348,7 +349,7 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 	@Override
 	public List<AucSSModel> pageAucSSByPId(String pid, int index) {
 		List<AucSSModel> list = new ArrayList<AucSSModel>();
-		String sql = "SELECT * FROM auction_sessions WHERE product_id= ? ORDER BY session_id LIMIT ?, 3;";
+		String sql = "SELECT * FROM auction_sessions WHERE product_id= ? AND is_Completed = 0 ORDER BY session_id LIMIT ?, 3;";
 		try {
 			// mở kết nối database
 			conn = new DBConnect().getConnection();
@@ -432,7 +433,7 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 	@Override
 	public List<AucSSModel> getAllAucByCid(String cId) {
 		List<AucSSModel> list = new ArrayList<AucSSModel>();
-		String sql = "SELECT auction_sessions.* FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.category_id = ?;";
+		String sql = "SELECT auction_sessions.* FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.category_id = ? AND auction_sessions.is_Completed = 0;";
 		try {
 			// mở kết nối database
 			conn = new DBConnect().getConnection();
@@ -469,7 +470,7 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 	@Override
 	public List<AucSSModel> pageAucSSByCId(String cid, int index) {
 		List<AucSSModel> list = new ArrayList<AucSSModel>();
-		String sql = "SELECT auction_sessions.* FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.category_id = ? ORDER BY auction_sessions.product_id LIMIT ?, 3;";
+		String sql = "SELECT auction_sessions.* FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.category_id = ? AND is_Completed = 0 ORDER BY auction_sessions.product_id LIMIT ?, 3;";
 		try {
 			// mở kết nối database
 			conn = new DBConnect().getConnection();
@@ -508,7 +509,7 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 
 	@Override
 	public int countCid(int cid) {
-		String sql = "SELECT COUNT(*) FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.category_id = 1;";
+		String sql = "SELECT COUNT(*) FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.category_id = ? AND is_Completed = 0;";
 		try {
 			// mở kết nối database
 			conn = new DBConnect().getConnection();
@@ -526,6 +527,28 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 			// TODO: handle exception
 		}
 		return 0;
+	}
+
+	@Override
+	public Date timeLife(int ssID) {
+		String sql = "CALL Auction_Time_Remaining(?);";
+		try {
+			// mở kết nối database
+			conn = new DBConnect().getConnection();
+			// ném câu query qua sql
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, ssID);
+			// chạy query và nhận kết quả
+			rs = ps.executeQuery();
+			// lấy từ ResultSet đổ vào
+			while (rs.next()) {
+				return rs.getDate(1);
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
 	}
 
 }

@@ -18,6 +18,7 @@ public interface ProductService {
 	List<ProductModel> pagingProduct(int index);
 
 	List<ProductModel> pagingProductByCID(String cid, int index);
+	
 
 	void insert(ProductModel product);
 

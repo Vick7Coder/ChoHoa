@@ -1,5 +1,7 @@
 package auctionplus.dao;
 
+
+import java.sql.Date;
 import java.util.List;
 
 import auctionplus.model.AucSSModel;
@@ -20,6 +22,7 @@ public interface AucSSDao {
 	AucSSModel get(int id);
 
 	List<AucSSModel> getAllLifeTime();
+	Date timeLife(int ssID);
 
 	List<AucSSModel> getAll();
 

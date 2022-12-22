@@ -1,8 +1,8 @@
 package auctionplus.model;
 
 public class AucSSPartModel {
-	private int ssId;
-	private int supId;
+	private AucSSModel ssId;
+	private SupplierModel supId;
 	private double aucSSPrice;
 	private boolean aucWin;
 
@@ -10,7 +10,7 @@ public class AucSSPartModel {
 
 	}
 
-	public AucSSPartModel(int ssId, int supId, double aucSSPrice, boolean aucWin) {
+	public AucSSPartModel(AucSSModel ssId, SupplierModel supId, double aucSSPrice, boolean aucWin) {
 
 		this.ssId = ssId;
 		this.supId = supId;
@@ -18,19 +18,21 @@ public class AucSSPartModel {
 		this.aucWin = aucWin;
 	}
 
-	public int getSsId() {
+
+
+	public AucSSModel getSsId() {
 		return ssId;
 	}
 
-	public void setSsId(int ssId) {
+	public void setSsId(AucSSModel ssId) {
 		this.ssId = ssId;
 	}
 
-	public int getSupId() {
+	public SupplierModel getSupId() {
 		return supId;
 	}
 
-	public void setSupId(int supId) {
+	public void setSupId(SupplierModel supId) {
 		this.supId = supId;
 	}
 
@@ -49,5 +51,12 @@ public class AucSSPartModel {
 	public void setAucWin(boolean aucWin) {
 		this.aucWin = aucWin;
 	}
+
+	@Override
+	public String toString() {
+		return "AucSSPartModel [ssId=" + ssId + ", supId=" + supId + ", aucSSPrice=" + aucSSPrice + ", aucWin=" + aucWin
+				+ "]";
+	}
+	
 
 }

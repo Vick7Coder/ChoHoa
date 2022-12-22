@@ -272,27 +272,27 @@ public class ProductDaoImpl extends DBConnect implements ProductDao {
 	@Override
 	public List<ProductModel> getAllProduct() {
 		// Khai báo list để lưu danh sách sản phẩm
-				List<ProductModel> list = new ArrayList<ProductModel>();
-				// Khai báo chuỗi truy vấn
-				String sql = "SELECT * FROM products ORDER BY product_id DES";
-				try {
-					// mở kết nối database
-					conn = new DBConnect().getConnection();
-					// ném câu query qua sql
-					ps = conn.prepareStatement(sql);
+		List<ProductModel> list = new ArrayList<ProductModel>();
+		// Khai báo chuỗi truy vấn
+		String sql = "SELECT * FROM products ORDER BY product_id DES";
+		try {
+			// mở kết nối database
+			conn = new DBConnect().getConnection();
+			// ném câu query qua sql
+			ps = conn.prepareStatement(sql);
 
-					// chạy query và nhận kết quả
-					rs = ps.executeQuery();
-					// lấy từ ResultSet đổ vào
-					while (rs.next()) {
-						list.add(new ProductModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-								rs.getInt(5)));
-					}
+			// chạy query và nhận kết quả
+			rs = ps.executeQuery();
+			// lấy từ ResultSet đổ vào
+			while (rs.next()) {
+				list.add(new ProductModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getInt(5)));
+			}
 
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-				return list;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
 	}
 
 }
