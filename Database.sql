@@ -11,7 +11,7 @@
  Target Server Version : 80016
  File Encoding         : 65001
 
- Date: 21/12/2022 16:46:36
+ Date: 23/12/2022 02:46:14
 */
 
 SET NAMES utf8mb4;
@@ -74,40 +74,38 @@ INSERT INTO `deliveries` VALUES (21, 'Bình Chánh', 18500);
 INSERT INTO `deliveries` VALUES (22, 'Nhà Bè', 18500);
 INSERT INTO `deliveries` VALUES (23, 'Củ Chi', 18500);
 
--- ----------------------------
--- 3.Table structure for momo_links
--- ----------------------------
-DROP TABLE IF EXISTS `momo_links`;
-CREATE TABLE `momo_links`  (
-  `wallet_id` int(255) NOT NULL,
-  `momo_acc_number` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`wallet_id`) USING BTREE,
-  CONSTRAINT `momo_links_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallets` (`wallet_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 3.Records of momo_links
--- ----------------------------
-
--- ----------------------------
--- 4.Table structure for recharge_histories
+-- 3.Table structure for recharge_histories
 -- ----------------------------
 DROP TABLE IF EXISTS `recharge_histories`;
 CREATE TABLE `recharge_histories`  (
-  `history_id` int(255) NOT NULL,
+  `history_id` int(255) NOT NULL AUTO_INCREMENT,
   `wallet_id` int(255) NOT NULL,
   `value` float(255, 0) NOT NULL,
   `create_Date` timestamp(0) NOT NULL,
   PRIMARY KEY (`history_id`) USING BTREE,
-  INDEX `wallet_id`(`wallet_id`) USING BTREE
+  INDEX `wallet_id`(`wallet_id`) USING BTREE,
+  CONSTRAINT `recharge_histories_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallets` (`wallet_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 4.Records of recharge_histories
+-- 3.Records of recharge_histories
 -- ----------------------------
+INSERT INTO `recharge_histories` VALUES (1, 1, 15000000, '2022-12-01 00:12:06');
+INSERT INTO `recharge_histories` VALUES (2, 2, 10000000, '2022-12-02 00:12:35');
+INSERT INTO `recharge_histories` VALUES (3, 3, 12000000, '2022-12-01 00:12:54');
+INSERT INTO `recharge_histories` VALUES (4, 4, 13500000, '2022-11-30 00:13:11');
+INSERT INTO `recharge_histories` VALUES (5, 5, 13000000, '2022-12-03 00:13:32');
+INSERT INTO `recharge_histories` VALUES (6, 6, 14200000, '2022-12-01 00:13:57');
+INSERT INTO `recharge_histories` VALUES (7, 7, 12100000, '2022-12-04 00:14:15');
+INSERT INTO `recharge_histories` VALUES (8, 8, 9500000, '2022-12-03 00:14:57');
+INSERT INTO `recharge_histories` VALUES (9, 9, 11000000, '2022-11-30 00:15:53');
+INSERT INTO `recharge_histories` VALUES (10, 10, 12500000, '2022-12-03 00:16:21');
+INSERT INTO `recharge_histories` VALUES (11, 11, 13500000, '2022-12-01 00:16:43');
 
 -- ----------------------------
--- 5.Table structure for roles
+-- 4.Table structure for roles
 -- ----------------------------
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles`  (
@@ -117,12 +115,12 @@ CREATE TABLE `roles`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 5.Records of roles
+-- 4.Records of roles
 -- ----------------------------
 INSERT INTO `roles` VALUES (0, 'admin');
 INSERT INTO `roles` VALUES (1, 'user');
 -- ----------------------------
--- 6.Table structure for products
+-- 5.Table structure for products
 -- ----------------------------
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products`  (
@@ -137,21 +135,21 @@ CREATE TABLE `products`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 6.Records of products
+-- 5.Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (1, 'Xuân An Khang', '/imgs/products/1.jpg', 'Mỗi mùa xuân về chắc hẳn mỗi người đều chọn cho ngôi nhà của mình những bình hoa rực rỡ để trưng bày, điều đó khiến ngôi nhà trở nên tươi mới và giàu màu sắc', 1);
-INSERT INTO `products` VALUES (2, 'Xuân Yêu Thương', '/imgs/products/2.jpg', 'Xuân yêu thương là bó hoa hồng kem dâu tượng trưng cho tình yêu mới chớm nở, trong sáng, đơn thuần của thiếu nữ', 1);
-INSERT INTO `products` VALUES (3, 'Yêu Là Cưới ', '/imgs/products/3.jpg', 'Yêu là cưới là bó hoa cưới cầm tay cô dâu giản dị mà sang trọng với những đóa hồng trắng.', 2);
-INSERT INTO `products` VALUES (4, 'Chung Nhịp Đập', '/imgs/products/4.jpg', 'Chung nhịp đập là bó hoa cưới màu đỏ cam thể hiện tình yêu cháy bỏng, mê say của các cặp uyên ương.', 2);
-INSERT INTO `products` VALUES (5, 'Lovely Pink', '/imgs/products/5.jpg', NULL, 3);
-INSERT INTO `products` VALUES (6, 'First Love', '/imgs/products/6.jpg', NULL, 3);
-INSERT INTO `products` VALUES (7, 'Petal Parade', '/imgs/products/7.jpg', NULL, 4);
-INSERT INTO `products` VALUES (8, 'You And Me', '/imgs/products/8.jpg', NULL, 4);
-INSERT INTO `products` VALUES (9, 'Until You', '/imgs/products/9.jpg', NULL, 5);
-INSERT INTO `products` VALUES (10, 'Purple Loves', '/imgs/products/10.jpg', NULL, 5);
+INSERT INTO `products` VALUES (1, 'Xuân An Khang', 'https://img.mayflower.vn/2020/01/xuan-an-khang.jpg', 'Mỗi mùa xuân về chắc hẳn mỗi người đều chọn cho ngôi nhà của mình những bình hoa rực rỡ để trưng bày, điều đó khiến ngôi nhà trở nên tươi mới và giàu màu sắc', 1);
+INSERT INTO `products` VALUES (2, 'Xuân Yêu Thương', 'https://img.mayflower.vn/2019/12/xuan-yeu-thuong.jpg', 'Xuân yêu thương là bó hoa hồng kem dâu tượng trưng cho tình yêu mới chớm nở, trong sáng, đơn thuần của thiếu nữ', 1);
+INSERT INTO `products` VALUES (3, 'Yêu Là Cưới ', 'https://img.mayflower.vn/2019/12/yeu-la-cuoi.jpg', 'Yêu là cưới là bó hoa cưới cầm tay cô dâu giản dị mà sang trọng với những đóa hồng trắng.', 2);
+INSERT INTO `products` VALUES (4, 'Chung Nhịp Đập', 'https://img.mayflower.vn/2019/12/chung-nhip-dap.jpg', 'Chung nhịp đập là bó hoa cưới màu đỏ cam thể hiện tình yêu cháy bỏng, mê say của các cặp uyên ương.', 2);
+INSERT INTO `products` VALUES (5, 'Lovely Pink', 'https://lavieestbelle.vn/image/cache/catalog/San%20Pham%20Chinh%20Thuc/Hoa%20Bo/DSCF4506-1-1100x1100.jpg', NULL, 3);
+INSERT INTO `products` VALUES (6, 'First Love', 'https://lavieestbelle.vn/image/cache/catalog/San%20Pham%20Chinh%20Thuc/Daily/06102022/HB6104-1100x1100.jpg', NULL, 3);
+INSERT INTO `products` VALUES (7, 'Petal Parade', 'https://lavieestbelle.vn/image/cache/catalog/San%20Pham%20Chinh%20Thuc/Daily/11302022/HG11301-1100x1100.jpg', NULL, 4);
+INSERT INTO `products` VALUES (8, 'You And Me', 'https://lavieestbelle.vn/image/cache/catalog/San%20Pham%20Chinh%20Thuc/Hoa%20Gio/z3881757718041_ebf908d80d07d2cf5ac0df2b6d7a603f-min-1100x1100.jpg', NULL, 4);
+INSERT INTO `products` VALUES (9, 'Until You', 'https://lavieestbelle.vn/image/cache/catalog/San%20Pham%20Chinh%20Thuc/Daily/10102022/HT10102-1100x1100.jpg', NULL, 5);
+INSERT INTO `products` VALUES (10, 'Purple Loves', 'https://lavieestbelle.vn/image/cache/catalog/San%20Pham%20Chinh%20Thuc/Tulip/z3806372899527_6f318b4485086d57f2a9a6b644ae5e27-1100x1100.jpg', NULL, 5);
 
 -- ----------------------------
--- 7.Table structure for users
+-- 6.Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
@@ -173,7 +171,7 @@ CREATE TABLE `users`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 7.Records of users
+-- 6.Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Nguyễn Trường', 'Phúc', 'phuc@gmail.com', '123456987258', 18, '0125698536', 'truongphuc', '123', 0);
 INSERT INTO `users` VALUES (2, 'Hoàng Bá ', 'Hiếu', 'bahieu@gmail.com', '121354458889', 18, '0256325952', 'bahieu', '123', 1);
@@ -188,7 +186,7 @@ INSERT INTO `users` VALUES (10, 'Cao Trần Khánh', 'Ngân', 'khanhngan@gmail.c
 INSERT INTO `users` VALUES (11, 'Trương Ngọc', 'Khánh', 'ngockhanh@gmail.com', '325698515222', 17, '0125632566', 'ngockhanh', '123', 1);
 
 -- ----------------------------
--- 8.Table structure for wallets
+-- 7.Table structure for wallets
 -- ----------------------------
 DROP TABLE IF EXISTS `wallets`;
 CREATE TABLE `wallets`  (
@@ -197,16 +195,26 @@ CREATE TABLE `wallets`  (
   `balance` float(255, 0) NOT NULL,
   PRIMARY KEY (`wallet_id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE,
-  CONSTRAINT `wallets_ibfk_2` FOREIGN KEY (`wallet_id`) REFERENCES `recharge_histories` (`wallet_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `wallets_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 8.Records of wallets
+-- 7.Records of wallets
 -- ----------------------------
+INSERT INTO `wallets` VALUES (1, 1, 15000000);
+INSERT INTO `wallets` VALUES (2, 2, 10000000);
+INSERT INTO `wallets` VALUES (3, 3, 12000000);
+INSERT INTO `wallets` VALUES (4, 4, 13500000);
+INSERT INTO `wallets` VALUES (5, 5, 13000000);
+INSERT INTO `wallets` VALUES (6, 6, 14200000);
+INSERT INTO `wallets` VALUES (7, 7, 12100000);
+INSERT INTO `wallets` VALUES (8, 8, 9500000);
+INSERT INTO `wallets` VALUES (9, 9, 11000000);
+INSERT INTO `wallets` VALUES (10, 10, 12500000);
+INSERT INTO `wallets` VALUES (11, 11, 13500000);
 
 -- ----------------------------
--- 9.Table structure for auction_sessions
+-- 8.Table structure for auction_sessions
 -- ----------------------------
 DROP TABLE IF EXISTS `auction_sessions`;
 CREATE TABLE `auction_sessions`  (
@@ -228,18 +236,18 @@ CREATE TABLE `auction_sessions`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 9.Records of auction_sessions
+-- 8.Records of auction_sessions
 -- ----------------------------
 INSERT INTO `auction_sessions` VALUES (1, 7, 1, 10000000, 7000000, 200000, '2020-10-27 23:10:17', '2020-10-28 23:10:40', '2020-10-31 23:11:21', b'1');
 INSERT INTO `auction_sessions` VALUES (2, 2, 2, 7000000, 4000000, 200000, '2020-10-01 21:53:55', '2020-10-02 21:54:08', '2020-10-05 21:54:21', b'1');
 INSERT INTO `auction_sessions` VALUES (3, 6, 4, 8000000, 4000000, 200000, '2022-12-05 14:05:04', '2022-12-05 14:05:17', '2022-12-31 14:05:22', b'0');
 INSERT INTO `auction_sessions` VALUES (4, 3, 5, 10000000, 4000000, 200000, '2022-12-05 19:07:32', '2022-12-05 19:07:32', '2022-12-31 19:07:32', b'0');
-INSERT INTO `auction_sessions` VALUES (17, 5, 3, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-31 19:07:52', b'0');
-INSERT INTO `auction_sessions` VALUES (18, 8, 8, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-31 19:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (17, 5, 3, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-30 21:07:52', b'0');
+INSERT INTO `auction_sessions` VALUES (18, 8, 8, 10000000, 4000000, 200000, '2022-12-05 19:07:52', '2022-12-05 19:07:52', '2022-12-29 19:07:52', b'0');
 INSERT INTO `auction_sessions` VALUES (20, 3, 6, 10000000, 4000000, 200000, '2022-12-10 19:18:52', '2022-12-10 19:18:52', '2022-12-31 19:18:52', b'0');
-INSERT INTO `auction_sessions` VALUES (21, 3, 7, 10000000, 4000000, 200000, '2022-12-10 19:18:54', '2022-12-10 19:18:54', '2022-12-31 19:18:54', b'0');
+INSERT INTO `auction_sessions` VALUES (21, 3, 7, 10000000, 4000000, 200000, '2022-12-10 19:18:54', '2022-12-10 19:18:54', '2022-12-31 17:18:54', b'0');
 -- ----------------------------
--- 10.Table structure for orders
+-- 9.Table structure for orders
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`  (
@@ -257,7 +265,7 @@ CREATE TABLE `orders`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 10.Records of orders
+-- 9.Records of orders
 -- ----------------------------
 INSERT INTO `orders` VALUES (1, 1, 7715500, '2020-10-31 23:31:11', 2, b'1');
 INSERT INTO `orders` VALUES (2, 2, 5717000, '2020-10-05 22:07:23', 18, b'1');
@@ -266,7 +274,7 @@ INSERT INTO `orders` VALUES (2, 2, 5717000, '2020-10-05 22:07:23', 18, b'1');
 -- ----------------------------
 DROP TABLE IF EXISTS `commissions`;
 CREATE TABLE `commissions`  (
-  `order_id` int(255) NOT NULL AUTO_INCREMENT,
+  `order_id` int(255) NOT NULL,
   `profit` float(255, 0) NOT NULL,
   `commission_value` float(255, 0) NOT NULL,
   PRIMARY KEY (`order_id`) USING BTREE,
@@ -274,12 +282,12 @@ CREATE TABLE `commissions`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 11.Records of commissions
+-- 10.Records of commissions
 -- ----------------------------
 INSERT INTO `commissions` VALUES (1, 215500, 43100);
 INSERT INTO `commissions` VALUES (2, 1017000, 203400);
 -- ----------------------------
--- 12.Table structure for suppliers
+-- 11.Table structure for suppliers
 -- ----------------------------
 DROP TABLE IF EXISTS `suppliers`;
 CREATE TABLE `suppliers`  (
@@ -292,7 +300,7 @@ CREATE TABLE `suppliers`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 12.Records of suppliers
+-- 11.Records of suppliers
 -- ----------------------------
 INSERT INTO `suppliers` VALUES (1, 2, 'Shop Hoa Bá Hiếu');
 INSERT INTO `suppliers` VALUES (2, 3, 'Shop Hoa Hồng Hiệu');
@@ -300,7 +308,7 @@ INSERT INTO `suppliers` VALUES (3, 4, 'Shop Hoa Khoa Đăng');
 INSERT INTO `suppliers` VALUES (4, 5, 'Shop Hoa Việt Hoàng');
 INSERT INTO `suppliers` VALUES (5, 6, 'Shop Hoa Hồng Lĩnh');
 -- ----------------------------
--- 13.Table structure for supplier_detail
+-- 12.Table structure for supplier_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `supplier_detail`;
 CREATE TABLE `supplier_detail`  (
@@ -314,7 +322,7 @@ CREATE TABLE `supplier_detail`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 13.Records of supplier_detail
+-- 12.Records of supplier_detail
 -- ----------------------------
 INSERT INTO `supplier_detail` VALUES (1, 1, 7500000);
 INSERT INTO `supplier_detail` VALUES (1, 2, 4500000);
@@ -344,7 +352,7 @@ INSERT INTO `supplier_detail` VALUES (5, 5, 370000);
 
 
 -- ----------------------------
--- 14.Table structure for auction_session_participants
+-- 13.Table structure for auction_session_participants
 -- ----------------------------
 DROP TABLE IF EXISTS `auction_session_participants`;
 CREATE TABLE `auction_session_participants`  (
@@ -359,7 +367,7 @@ CREATE TABLE `auction_session_participants`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- 14.Records of auction_session_participants
+-- 13.Records of auction_session_participants
 -- ----------------------------
 INSERT INTO `auction_session_participants` VALUES (1, 1, 7700000, b'1');
 INSERT INTO `auction_session_participants` VALUES (1, 2, 8500000, b'0');
@@ -392,6 +400,36 @@ INSERT INTO `auction_session_participants` VALUES (21, 5, 6100000, b'0');
 
 
 -- ----------------------------
+-- Procedure structure for Insert_Order
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Insert_Order`;
+delimiter ;;
+CREATE PROCEDURE `Insert_Order`(IN Aid INT(255),
+	IN total INT(255),
+	IN delivery INT(255))
+BEGIN
+
+	INSERT INTO orders(orders.session_id,orders.total_price,orders.create_Date,orders.delivery_id,orders.is_Completed)
+		VALUES(Aid,total,CURRENT_TIMESTAMP(),delivery,1);
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for Update_Wallet
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `Update_Wallet`;
+delimiter ;;
+CREATE PROCEDURE `Update_Wallet`(IN Uid INT(255),
+	IN money INT(255))
+BEGIN
+	UPDATE wallets SET wallets.balance=money WHERE wallets.user_id=Uid;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for Auction_End
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `Auction_End`;
@@ -399,39 +437,62 @@ delimiter ;;
 CREATE PROCEDURE `Auction_End`(Aid INT(255))
 BEGIN
 	
-	DECLARE ngay INT(255) DEFAULT 0;
-	DECLARE gio INT(255) DEFAULT 0;
-	DECLARE phut INT(255) DEFAULT 0;
-	DECLARE giay INT(255) DEFAULT 0;
-	DECLARE remain INT(255) DEFAULT 0;
-	
 	DECLARE end_price INT(255) DEFAULT 0;
+	DECLARE ship INT(255) DEFAULT 0;
+	DECLARE price_total INT(255) DEFAULT 0;
+	DECLARE ship_id INT(255) DEFAULT 0;
+	DECLARE organizer_id INT(255) DEFAULT 0;
+	DECLARE winner INT(255) DEFAULT 0;
+	DECLARE organizer_balance INT(255) DEFAULT 0;
+	DECLARE winner_balance INT(255) DEFAULT 0;
+	DECLARE	tien_sau_mua INT(255) DEFAULT 0;
+	DECLARE tien_sau_ban INT(255) DEFAULT 0;
 	
-	SELECT TIMESTAMPDIFF(SECOND,CURRENT_DATE,end_Day) INTO remain FROM auction_sessions WHERE session_id=Aid;
-	SET ngay=FLOOR(remain/60/60/24);
-	SET giay=MOD(remain,60);
-	SET phut=MOD(MOD(remain,60),60);
-	SET gio=MOD(MOD(MOD(remain,60),60),24);
 	
 	SELECT MIN(auction_session_price) INTO end_price from auction_session_participants WHERE session_id=Aid;
+	UPDATE auction_session_participants SET auction_winner=1 WHERE session_id=Aid AND auction_session_price=end_price;
 	
-	IF(ngay<=0 AND gio<=0 AND phut<=0 AND giay<=0) THEN 
-		UPDATE auction_session_participants SET auction_winner=1 WHERE session_id=Aid AND auction_session_price=end_price;
-	END IF;
+	-- Chèn bảng Order 
+	SELECT deliveries.shipping_charge INTO ship from auction_sessions 
+		INNER JOIN auction_session_participants on auction_sessions.session_id=auction_session_participants.session_id 
+		INNER JOIN suppliers ON auction_session_participants.supplier_id=suppliers.supplier_id
+		INNER JOIN users ON suppliers.owner_id=users.user_id
+		INNER JOIN deliveries ON users.address=deliveries.delivery_id
+		WHERE auction_sessions.session_id=Aid AND auction_session_participants.auction_winner=1;
+	SET price_total = ship + end_price;
+	SELECT deliveries.delivery_id INTO ship_id from auction_sessions 
+		INNER JOIN auction_session_participants on auction_sessions.session_id=auction_session_participants.session_id 
+		INNER JOIN suppliers ON auction_session_participants.supplier_id=suppliers.supplier_id
+		INNER JOIN users ON suppliers.owner_id=users.user_id
+		INNER JOIN deliveries ON users.address=deliveries.delivery_id
+		WHERE auction_sessions.session_id=Aid AND auction_session_participants.auction_winner=1;
+	CALL Insert_Order(Aid,price_total,ship_id);
 	
-	IF(ngay<=0 AND gio<=0 AND phut<=0 AND giay<=0) THEN 
-		UPDATE auction_sessions SET is_Completed=1 WHERE session_id=Aid ;
-	END IF;
+	-- Update Wallets
+	SELECT wallets.balance INTO organizer_balance from auction_sessions
+		INNER JOIN users ON auction_sessions.auction_organizer_id=users.user_id
+		INNER JOIN wallets ON users.user_id=wallets.user_id
+		WHERE auction_sessions.session_id=Aid;
+	SELECT wallets.balance INTO winner_balance FROM auction_session_participants
+		INNER JOIN suppliers ON suppliers.supplier_id=auction_session_participants.supplier_id
+		INNER JOIN users on suppliers.owner_id=users.user_id
+		INNER JOIN wallets ON users.user_id=wallets.user_id
+		WHERE auction_session_participants.session_id=Aid AND auction_session_participants.auction_winner=1;		
 		
-	IF(ngay<=0 AND gio<=0 AND phut<=0 AND giay<=0) THEN 
-		SELECT users.user_id winner_id
-			FROM auction_session_participants 
-			INNER JOIN suppliers ON auction_session_participants.supplier_id=suppliers.supplier_id
-			INNER JOIN users ON suppliers.owner_id=users.user_id
-			WHERE auction_session_participants.session_id=Aid AND auction_session_participants.auction_winner=1;
-	END IF;	
+	SET tien_sau_mua = organizer_balance - price_total;
+	SET tien_sau_ban = winner_balance + price_total;
+	SELECT users.user_id INTO organizer_id from auction_sessions
+		INNER JOIN users ON auction_sessions.auction_organizer_id=users.user_id
+		WHERE auction_sessions.session_id=Aid;
+	SELECT users.user_id INTO winner FROM auction_session_participants
+		INNER JOIN suppliers ON suppliers.supplier_id=auction_session_participants.supplier_id
+		INNER JOIN users on suppliers.owner_id=users.user_id
+		WHERE auction_session_participants.session_id=Aid AND auction_session_participants.auction_winner=1;
+	CALL Update_Wallet(organizer_id,tien_sau_mua);
+	CALL Update_Wallet(winner,tien_sau_ban);
+		
+	UPDATE auction_sessions SET is_Completed=1 WHERE session_id=Aid ;
 	
-
 END
 ;;
 delimiter ;
@@ -685,3 +746,20 @@ END
 delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Event structure for Check_Auction_End
+-- ----------------------------
+DROP EVENT IF EXISTS `Check_Auction_End`;
+delimiter ;;
+CREATE EVENT `Check_Auction_End`
+ON SCHEDULE
+EVERY '1' SECOND STARTS '2022-12-23 02:40:02' ENDS '2023-12-23 02:40:02'
+DO BEGIN
+	DECLARE Aid INT(255) DEFAULT 0;
+	SELECT auction_sessions.session_id INTO Aid FROM auction_sessions	
+		WHERE TIMESTAMPDIFF(SECOND,CURRENT_DATE,end_Day) <= 0 AND auction_sessions.is_Completed=0;
+	CALL Auction_End(Aid);
+END
+;;
+delimiter ; 
