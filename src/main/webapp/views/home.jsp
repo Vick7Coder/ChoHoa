@@ -64,7 +64,7 @@ Begin Content
 				<c:forEach items="${last3Auc}" var="a">
 					<div class="col mb-4">
 						<div class="card shadow">
-							<img src="<c:url value="/templates/imgs/hoacuoi1.jpg"/>"
+							<img src="${a.getProd().getpImage()}"
 								class="card-img-top" alt="...">
 							<div class="card-body">
 								<h5 class="card-title">${a.getProd().getpName()}</h5>
