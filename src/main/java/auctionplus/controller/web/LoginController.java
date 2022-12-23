@@ -35,6 +35,7 @@ public class LoginController extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.setAttribute("acc", account);
 			session.setAttribute("nameUSer", account.getfName());
+			session.setAttribute("uid", account.getuId());
 			// thời gian tồn tại
 			/* session.setMaxInactiveInterval(1000); */
 			

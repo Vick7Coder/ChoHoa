@@ -15,10 +15,10 @@
 				width="200p" /></a>
 		</div>
 		<div class="nav-search">
-			<form class="form">
+			<form action="search" class="form">
 				<div class="p-1 bg-light rounded rounded-pill shadow mb-4">
 					<div class="input-group">
-						<input type="search" placeholder="What're you searching for?"
+						<input type="text" name="txt" value="${txtS}" placeholder="What're you searching for?"
 							aria-describedby="button-addon1"
 							class="form-control border-0 bg-light">
 						<div class="input-group-append">
@@ -74,7 +74,7 @@
 							</c:forEach>
 
 						</div></li>
-					<li class="nav-item"><a class="nav-link" href="auction.html">CUỘC
+					<li class="nav-item"><a class="nav-link" href="create-auction?uid=${sessionScope.acc.getuId()}">CUỘC
 							ĐẤU GIÁ </a></li>
 					<li class="nav-item"><a class="nav-link" href="tutorial.html">HƯỚNG
 							DẪN </a></li>
@@ -96,13 +96,9 @@
 						<div class="dropdown-menu dropdown-menu-lg-left"
 							aria-labelledby="dropdownMenuButton">
 							<div class="title-wrap">
-								<a href="#" class="small ml-auto">Mark all as read</a>
+								<a href="<c:url value='/order?id=${sessionScope.acc.getuId()}'/>" class="small ml-auto">Order</a>
 							</div>
-							<ul class="list-group">
-								<li class="list-group-item">An item</li>
-								<li class="list-group-item">A second item</li>
-								<li class="list-group-item">A third item</li>
-							</ul>
+							
 							<p class="text-center m-0 p-0">
 								<a href="#" class="small">View All</a>
 							</p>

@@ -56,7 +56,7 @@ public class AuctionListController extends HttpServlet {
 			if (count % 3 != 0) {
 				endPage++;
 			}
-			List<AucSSModel> list = auc.pagingAucSS(index);
+			List<AucSSModel> list = auc.getAllLifeTime();
 			req.setAttribute("endP", endPage);
 			req.setAttribute("listAuc", list);
 		} else {
@@ -67,7 +67,7 @@ public class AuctionListController extends HttpServlet {
 			if (count % 3 != 0) {
 				endPage++;
 			}
-			List<AucSSModel> listAC = auc.pageAucSSByCId(cid, index);
+			List<AucSSModel> listAC = auc.getAllAucByCid(cid);
 			req.setAttribute("listAuc", listAC);
 			req.setAttribute("endP", endPage);
 		}

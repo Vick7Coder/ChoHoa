@@ -25,35 +25,13 @@ Begin Content
 					<h3 class="card-title">${a.getProd().getpName()}</h3>
 					<div class="card-body text-dark">
 						<h5 class="card-text">${a.getProd().getDetail()}</h5>
-						<div class="card-title mt-5">
-							<div class="rounded shadow text-center mb-3 mt-3"
-								style="background: white">
-								<p class="mb-0 font-weight-bold text-uppercase">Thời gian
-									còn lại</p>
-								<table class="table table-borderless">
-									<thead>
-										<tr>
-											<th scope="col">Ngày</th>
-											<th scope="col">Giờ</th>
-											<th scope="col">Phút</th>
-											<th scope="col">Giây</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>${dateT}</td>
-
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+						<div class="card-title mt-5"></div>
 						<div class="card-title">
 							<h3>
-								<span class="badge badge-success ">Trạng thái</span> <span>Đang
-									diễn ra</span>
+								<!-- <span class="badge badge-success ">Trạng thái</span> <span>Đang
+									diễn ra</span> -->
 								<c:choose>
-									<c:when test="${a.isComplete() == true}">
+									<c:when test="${a.isComplete() == false}">
 										<span class="badge badge-success ">Trạng thái</span>
 										<span>Đang diễn ra</span>
 									</c:when>
@@ -67,8 +45,8 @@ Begin Content
 						</div>
 						<div class="card-title">
 							<h3>
-								<span class="badge badge-success">Thông tin đấu giá</span> <span>7
-									người tham gia</span>
+								<span class="badge badge-success">Thông tin đấu giá</span> <span>${count}
+									lượt ra giá</span>
 
 							</h3>
 						</div>
@@ -83,8 +61,7 @@ Begin Content
 					<div class="float-right mt-5">
 						<button type="button" class="btn btn-danger"
 							onclick="openDetail()">Tham gia</button>
-						<button type="button" class="btn btn-success ml-3"
-							onclick="openPayment()">Giao dịch ngay</button>
+
 					</div>
 				</div>
 			</div>
@@ -98,15 +75,15 @@ Begin Content
 					<thead>
 						<tr>
 							<th scope="col">Số thứ tự</th>
-							<th scope="col">Tên người tham gia</th>
+							<th scope="col">Tên Shop tham gia</th>
 							<th scope="col">Giá đặt</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${partList}" var="k">
+						<c:forEach items="${partList}" var="k" varStatus="STT">
 							<tr>
-								<th scope="row">1</th>
+								<th scope="row">${STT.index+1}</th>
 								<td>${k.getSupId().getSupName()}</td>
 								<td><fmt:formatNumber type="number" groupingUsed="true"
 										value="${k.getAucSSPrice()}" /> VND</td>
@@ -127,8 +104,9 @@ Begin Content
 
 					<tbody>
 						<tr>
-							<th scope="row">Trạng thái</th>
-							<td>Mới</td>
+							<th scope="row">Giá thắng liền</th>
+							<td><fmt:formatNumber type="number" groupingUsed="true"
+									value="${a.getCloPrice()}" /> VND</td>
 
 						</tr>
 						<tr>
@@ -155,7 +133,8 @@ Begin Content
 						</tr>
 						<tr>
 							<th scope="row">Bước nhảy</th>
-							<td>${a.getPriceStep()}</td>
+							<td><fmt:formatNumber type="number" groupingUsed="true"
+									value="${a.getPriceStep()}" /> VND</td>
 						</tr>
 						<tr>
 							<th scope="row">Người đăng</th>
@@ -163,7 +142,7 @@ Begin Content
 						</tr>
 						<tr>
 							<th scope="row">Thông tin liên hệ</th>
-							<td>${a.getUser().getfName()}</td>
+							<td>${a.getUser().getEmail()}</td>
 						</tr>
 
 					</tbody>
@@ -186,7 +165,7 @@ Begin Content
 							<p>${r.getProd().getDetail()}</p>
 						</div>
 						<a
-							href="auction-detail?ssid=${r.getSsId()}&cid=${r.getProd().getcId()}"
+							href="auction-detail?ssid=${r.getSsId()}&cid=${r.getProd().getcId()}&uid=${sessionScope.acc.getuId()}"
 							class="btn btn-danger float-right">Tham gia</a>
 					</div>
 				</div>
@@ -205,6 +184,9 @@ Begin Content
 			style="background: firebrick">
 			<div class="d-flex justify-content-between">
 				<h4 class="text-white">Đấu giá</h4>
+				<input class="text-white" type="text"
+					placeholder="Mời thượng đế ${sessionScope.nameUSer} ra giá!"
+					readonly>
 				<h4 class="text-white" onclick="closeDetail()">
 					<i class="bi bi-x-lg"></i>
 				</h4>
@@ -212,32 +194,14 @@ Begin Content
 			<div class="container-lg text-center text-lg-start">
 				<div class="row">
 					<div class="col-lg-6">
-						<div class="rounded shadow text-center mb-4 mt-5"
-							style="background: white">
-							<p class="mb-0 font-weight-bold text-uppercase">Thời gian còn
-								lại</p>
-							<table class="table table-borderless">
-								<thead>
-									<tr>
-										<th scope="col">Ngày</th>
-										<th scope="col">Giờ</th>
-										<th scope="col">Phút</th>
-										<th scope="col">Giây</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>4</td>
-										<td>12</td>
-										<td>23</td>
-										<td>11</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+						<p class="text-white float-left">ID Phiên đấu giá:</p>
+						<input name="phien" id="phien" class="form-control" type="text"
+							placeholder="" value="${a.getSsId()}" readonly>
 						<p class="text-white float-left">Giá hiện tại</p>
 						<input class="form-control" type="text"
-							placeholder="100.000.000 VND" readonly>
+							placeholder="<fmt:formatNumber
+												type="number" groupingUsed="true" value="${lastOffer.getAucSSPrice()}" /> VND"
+							readonly>
 						<h5 class="my-5 display-4 fw-bold" style="color: white">
 							The best offer <br /> <span class="text-primary">for your
 								product</span>
@@ -245,17 +209,15 @@ Begin Content
 					</div>
 					<div class="col-lg-6 mb-5 mt-5">
 
-						<p class="text-white float-left">Ví tiền</p>
-						<div class="form-group">
-							<select class="form-control">
-								<option>Disabled select</option>
-							</select>
-						</div>
-						<p for="numberForm" class="text-white float-left mt-5">Place
-							your bid</p>
+						<p class="text-white float-left">ID : ${Sup.getSupName()}</p>
+						<input name="supp" id="supp" class="form-control" type="text"
+							placeholder="" value="${Sup.getSupId()}" readonly>
+						<p for="numberForm" class="text-white float-left mt-5">Ra giá
+							ở đây:</p>
 						<div class="input-group">
-							<input type="number" id="numberForm" class="form-control" min="0"
-								max="999999999" step="100000" value="${offer}">
+							<input id="offer" name="offer" type="number" id="numberForm"
+								class="form-control" min="0" max="${lastOffer.getAucSSPrice()}"
+								step="${a.getPriceStep()}" value="${offer}">
 							<div class="input-group-append">
 								<span class="input-group-text">VND</span>
 							</div>
@@ -290,3 +252,4 @@ End Content
 		document.getElementById("formDetail").style.display = "none";
 	}
 </script>
+

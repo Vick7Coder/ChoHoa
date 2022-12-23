@@ -69,7 +69,7 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 
 	@Override
 	public void insert(AucSSModel auc) {
-		String sql = "INSERT INTO auction_sessions (auction_organizer_id, product_id, reserve_price, closing_price, price_step, create_Date, start_Day, end_Day, is_Completed) VALUES (?,?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO auction_sessions (auction_organizer_id, product_id, reserve_price, closing_price, price_step, create_Date, start_Day, end_Day, is_Completed) VALUES (?,?,?,?,?,NOW(),?,?,0);";
 		try {
 			conn = new DBConnect().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -78,10 +78,9 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 			ps.setDouble(3, auc.getRePrice());
 			ps.setDouble(4, auc.getCloPrice());
 			ps.setDouble(5, auc.getPriceStep());
-			ps.setDate(6, auc.getCreaDate());
-			ps.setDate(7, auc.getStartDay());
-			ps.setDate(8, auc.getEndDay());
-			ps.setBoolean(9, auc.isComplete());
+			
+			ps.setDate(6, auc.getStartDay());
+			ps.setDate(7, auc.getEndDay());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -273,14 +272,14 @@ public class AucSSDaoImpl extends DBConnect implements AucSSDao {
 	@Override
 	public List<AucSSModel> searchByProductName(String txtSearch) {
 		List<AucSSModel> list = new ArrayList<AucSSModel>();
-		String sql = "SELECT auction_sessions.* FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id LIKE products.product_name= ?;";
+		String sql = "SELECT auction_sessions.* FROM auction_sessions INNER JOIN products ON auction_sessions.product_id = products.product_id WHERE products.product_name LIKE ?;";
 		try {
 			// mở kết nối database
 			conn = new DBConnect().getConnection();
 			// ném câu query qua sql
 			ps = conn.prepareStatement(sql);
 			// gán giá trị cho từng dấu hỏi tham số
-			ps.setString(1, txtSearch);
+			ps.setString(1, "%" + txtSearch + "%");
 			// chạy query và nhận kết quả
 			rs = ps.executeQuery();
 			// lấy từ ResultSet đổ vào

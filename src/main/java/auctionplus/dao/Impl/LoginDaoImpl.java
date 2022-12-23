@@ -40,6 +40,7 @@ public class LoginDaoImpl extends DBConnect implements LoginDao {
 				DeliveryModel add = delService.get(Integer.parseInt(rs.getString("address")));
 				RoleModel role = roleService.get(Integer.parseInt(rs.getString("role_id")));
 				UserModel user = new UserModel();
+				user.setuId(rs.getInt("user_id"));
 				user.setlName(rs.getString("last_name"));
 				user.setfName(rs.getString("first_name"));
 				user.setEmail(rs.getString("email"));

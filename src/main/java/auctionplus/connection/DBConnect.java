@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnect {
-	private String jdbcURL = "jdbc:mysql://localhost:3306/auctionproject";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/ecprj";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "hieu";
 

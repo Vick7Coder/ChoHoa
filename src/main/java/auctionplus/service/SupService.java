@@ -8,4 +8,6 @@ public interface SupService {
 	List<SupplierModel> getAll();
 
 	SupplierModel get(int supId);
+	
+	SupplierModel getByUid(int uId);
 }

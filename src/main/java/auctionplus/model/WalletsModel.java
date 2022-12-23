@@ -2,14 +2,14 @@ package auctionplus.model;
 
 public class WalletsModel {
 	private int wId;
-	private int uId;
+	private UserModel uId;
 	private double balance;
 
 	public WalletsModel() {
 
 	}
 
-	public WalletsModel(int wId, int uId, double balance) {
+	public WalletsModel(int wId, UserModel uId, double balance) {
 		this.wId = wId;
 		this.uId = uId;
 		this.balance = balance;
@@ -23,11 +23,13 @@ public class WalletsModel {
 		this.wId = wId;
 	}
 
-	public int getuId() {
+	
+
+	public UserModel getuId() {
 		return uId;
 	}
 
-	public void setuId(int uId) {
+	public void setuId(UserModel uId) {
 		this.uId = uId;
 	}
 

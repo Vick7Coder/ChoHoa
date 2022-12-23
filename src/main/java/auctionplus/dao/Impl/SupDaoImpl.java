@@ -74,4 +74,32 @@ public class SupDaoImpl extends DBConnect implements SupDao {
 		return null;
 	}
 
+	@Override
+	public SupplierModel getByUid(int uId) {
+		String sql = "SELECT * FROM suppliers WHERE suppliers.owner_id = ?;";
+		try {
+			// mở kết nối database
+			conn = new DBConnect().getConnection();
+			// ném câu query qua sql
+			ps = conn.prepareStatement(sql);
+			// gán giá trị cho từng dấu hỏi tham số
+			ps.setInt(1, uId);
+			// chạy query và nhận kết quả
+			rs = ps.executeQuery();
+			// lấy từ ResultSet đổ vào
+			while (rs.next()) {
+				SupplierModel sup = new SupplierModel();
+				UserModel user = userS.get(rs.getInt("owner_id"));
+				sup.setSupId(rs.getInt("supplier_id"));
+				sup.setoId(user);
+				sup.setSupName(rs.getString("supplier_name"));
+				return sup;
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

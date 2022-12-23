@@ -8,7 +8,7 @@
   <div class="w3-container">
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark shadow-lg">
       <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
-      <a href="#" class="navbar-brand">Brand<b>Name</b></a>
+      <a href="#" class="navbar-brand">AUCTION<b>PLUS</b></a>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>

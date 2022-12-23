@@ -35,43 +35,12 @@ Begin Content
 					</div>
 				</div>
 				<div class="card border-light mt-2 mb-3" style="max-width: 18rem;">
-					<div class="card-header" style="font-weight: bold; font-size: 20px">Lọc
-						sản phẩm</div>
+					<div class="card-header" style="font-weight: bold; font-size: 20px"></div>
 					<div class="card-body">
-						<div class="list-group-flush">
-							<h5 class="card-title">Trạng thái</h5>
-							<div class="form-check">
-								<input class="form-check-input" type="radio"
-									name="exampleRadios" id="exampleRadios1" value="option1"
-									checked> <label class="form-check-label"
-									for="exampleRadios1"> Tất cả </label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio"
-									name="exampleRadios" id="exampleRadios2" value="option2">
-								<label class="form-check-label" for="exampleRadios2">
-									Mới nhất </label>
-							</div>
-						</div>
-						<div class="list-group-flush mt-3">
-							<h5 class="card-title">Giá</h5>
-							<div class="slidecontainer">
-								<input type="range" min="1" max="999999999" value="1"
-									class="slider s1" id="myRange1">
-								<p class="mt-2">
-									Giá tiền từ: <span id="demo1"></span> VNĐ
-								</p>
-								<input type="range" min="1" max="999999999" value="999999999"
-									class="slider s2" id="myRange2">
-								<p class="mt-2">
-									Giá tiền đến: <span id="demo2"></span> VNĐ
-								</p>
-							</div>
-						</div>
+						<div class="list-group-flush"></div>
 
 					</div>
-					<button type="button" class="btn btn-danger float-right ">Tìm
-						sản phẩm</button>
+
 				</div>
 
 			</div>
@@ -107,7 +76,9 @@ Begin Content
 									<div class="d-flex justify-content-around mt-3">
 										<span class="heart-cart"> <i class="bi bi-heart-fill "></i></span>
 
-										<a href="auction-detail?ssid=${a.getSsId()}&cid=${a.getProd().getcId()}" class="btn btn-outline-danger">Tham gia</a>
+										<a
+											href="auction-detail?ssid=${a.getSsId()}&cid=${a.getProd().getcId()}&uid=${sessionScope.acc.uId}"
+											class="btn btn-outline-danger">Tham gia</a>
 
 									</div>
 								</div>

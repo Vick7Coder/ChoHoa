@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class RechargeHistoriesModel {
 	private int hisId;
-	private int wId;
+	private WalletsModel wId;
 	private double value;
 	private Date cDate;
 
@@ -12,7 +12,7 @@ public class RechargeHistoriesModel {
 
 	}
 
-	public RechargeHistoriesModel(int hisId, int wId, double value, Date cDate) {
+	public RechargeHistoriesModel(int hisId, WalletsModel wId, double value, Date cDate) {
 
 		this.hisId = hisId;
 		this.wId = wId;
@@ -28,11 +28,11 @@ public class RechargeHistoriesModel {
 		this.hisId = hisId;
 	}
 
-	public int getwId() {
+	public WalletsModel getwId() {
 		return wId;
 	}
 
-	public void setwId(int wId) {
+	public void setwId(WalletsModel wId) {
 		this.wId = wId;
 	}
 

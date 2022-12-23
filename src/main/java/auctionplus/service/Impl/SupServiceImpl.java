@@ -20,6 +20,11 @@ public class SupServiceImpl implements SupService {
 		return supDao.get(supId);
 	}
 
+	@Override
+	public SupplierModel getByUid(int uId) {
+		return supDao.getByUid(uId);
+	}
+
 	
 
 }
