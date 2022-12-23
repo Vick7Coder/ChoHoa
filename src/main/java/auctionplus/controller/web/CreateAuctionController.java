@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -72,34 +69,7 @@ public class CreateAuctionController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*
-		 * UserModel us = new UserModel(); DeliveryService setS = new
-		 * DeliveryServiceImpl(); RoleService roleS = new RoleServiceImpl();
-		 * 
-		 * DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
-		 * ServletFileUpload servletFileUpload = new
-		 * ServletFileUpload(diskFileItemFactory);
-		 * servletFileUpload.setHeaderEncoding("UTF-8"); try {
-		 * resp.setContentType("text/html"); resp.setCharacterEncoding("UTF-8");
-		 * req.setCharacterEncoding("UTF-8"); List<FileItem> items =
-		 * servletFileUpload.parseRequest(req); for (FileItem item : items) { if
-		 * (item.getFieldName().equals("ten")) { us.setfName(item.getString("UTF-8")); }
-		 * else if (item.getFieldName().equals("ho")) {
-		 * us.setlName(item.getString("UTF-8")); } else if
-		 * (item.getFieldName().equals("mail")) { us.setEmail(item.getString("UTF-8"));
-		 * } else if (item.getFieldName().equals("chungminh")) {
-		 * us.setCMND(item.getString("UTF-8")); } else if
-		 * (item.getFieldName().equals("diachi")) {
-		 * us.setAddress(setS.get(Integer.parseInt(item.getString("UTF-8")))); } else if
-		 * (item.getFieldName().equals("sdt")) { us.setpNum(item.getString("UTF-8")); }
-		 * else if (item.getFieldName().equals("user")) {
-		 * us.setuName(item.getString("UTF-8")); } else if
-		 * (item.getFieldName().equals("pass")) { us.setuPass(item.getString("UTF-8"));
-		 * } us.setRole(roleS.get(1)); } userS.insert(us);
-		 * resp.sendRedirect(req.getContextPath() + "/home"); } catch
-		 * (FileUploadException e) { e.printStackTrace(); } catch (Exception e) {
-		 * e.printStackTrace(); }
-		 */
+		
 
 		AucSSModel auc = new AucSSModel();
 		ProductService prodS = new ProductServiceImpl();
@@ -109,13 +79,14 @@ public class CreateAuctionController extends HttpServlet {
 		Double begin = Double.parseDouble(req.getParameter("khoidiem"));
 		Double end = Double.parseDouble(req.getParameter("muangay"));
 		Double step = Double.parseDouble(req.getParameter("step"));
-		String batdau = req.getParameter("batdau")+":00";
+		String batdau = req.getParameter("batdau");
 		String ketthuc = req.getParameter("ketthuc");
 		
-		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
 		try {
-			/*
-			Date endDate = new Date().valueOf(batdau);
+			
+			Date beginDate = Date.valueOf(batdau);
+			Date endDate = Date.valueOf(ketthuc);
+			
 
 			auc.setUser(ngtao);
 			auc.setProd(sp);
@@ -124,8 +95,7 @@ public class CreateAuctionController extends HttpServlet {
 			auc.setStartDay(beginDate);
 			auc.setEndDay(endDate);
 			auc.setPriceStep(step);
-			aucS.insert(auc);*/
-			resp.sendRedirect(req.getContextPath() + "/home");
+			aucS.insert(auc);
 		}  catch (Exception e) {
 			e.printStackTrace();
 		}
